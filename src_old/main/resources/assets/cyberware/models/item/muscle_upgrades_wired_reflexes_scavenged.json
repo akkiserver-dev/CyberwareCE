@@ -1,0 +1,6 @@
+{
+    "parent": "item/generated",
+    "textures": {
+        "layer0": "cyberware:items/muscle_upgrades_wired_reflexes_scavenged"
+    }
+}
