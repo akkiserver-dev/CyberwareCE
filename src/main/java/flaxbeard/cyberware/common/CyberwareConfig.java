@@ -80,7 +80,7 @@ public final class CyberwareConfig {
         ENGINEERING_CHANCE = builder.comment("Chance of blueprint from Engineering Table").defineInRange("engineeringChance", 15.0, 0.0, 100.0);
         SCANNER_CHANCE = builder.comment("Chance of blueprint from Scanner").defineInRange("scannerChance", 10.0, 0.0, 50.0);
         SCANNER_CHANCE_ADDL = builder.comment("Additive chance for Scanner per extra item").defineInRange("scannerChanceAdditional", 10.0, 0.0, 100.0);
-        SCANNER_TIME = builder.comment("Ticks taken per Scanner operation", "24000 is one Minecraft day, 1200 is one real-life minute").defineInRange("scannerTime", 24000, 0, Integer.MAX_VALUE);
+        SCANNER_TIME = builder.comment("Ticks taken per Scanner operation", "24000 is one Minecraft day, 1200 is one real-life minute").defineInRange("scannerTime", 12000, 0, Integer.MAX_VALUE);
         builder.pop();
 
         builder.push("mobs");

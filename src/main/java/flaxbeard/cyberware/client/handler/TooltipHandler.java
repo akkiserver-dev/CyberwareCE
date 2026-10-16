@@ -57,7 +57,7 @@ public final class TooltipHandler {
 
             Quality quality = cyberware.getQuality(stack);
             if (quality != null) {
-                tooltip.add(Component.translatable(quality.getTranslationKey()));
+                tooltip.add(Component.translatable(quality.translationKey()));
             }
         } else if (stack.getItem() instanceof Deconstructable) {
             Component line = Component.translatable("cyberware.tooltip.can_deconstruct").withStyle(ChatFormatting.DARK_GRAY);

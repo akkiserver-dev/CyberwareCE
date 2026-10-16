@@ -291,5 +291,6 @@
   "cyberware.container.engineering": "Ingénierie Cyberware",
   "cyberware.container.scanner": "Scanneur",
   "cyberware.container.blueprint_archive": "Banque de Schémas",
-  "cyberware.container.component_box": "Boîte à composants"
+  "cyberware.container.component_box": "Boîte à composants",
+  "item.cyberware.cyberzombie_spawn_egg": "Œuf d'apparition de Cyberzombie"
 }

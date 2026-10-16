@@ -160,8 +160,8 @@ public class CyberwareItem extends Item implements Cyberware, CyberwareTabItem, 
     public Component getName(ItemStack stack) {
         Component name = super.getName(stack);
         Quality quality = getQuality(stack);
-        if (quality != null && quality.getNameModifier() != null) {
-            return Component.translatable(quality.getNameModifier(), name);
+        if (quality != null && quality.nameModifier() != null) {
+            return Component.translatable(quality.nameModifier(), name);
         }
         return name;
     }

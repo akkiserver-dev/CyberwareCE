@@ -278,5 +278,6 @@
   "cyberware.container.engineering": "机械工程桌",
   "cyberware.container.scanner": "扫描仪",
   "cyberware.container.blueprint_archive": "蓝图馆",
-  "cyberware.container.component_box": "元件收纳盒"
+  "cyberware.container.component_box": "元件收纳盒",
+  "item.cyberware.cyberzombie_spawn_egg": "僵尸赛博格刷怪蛋"
 }

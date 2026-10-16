@@ -355,5 +355,9 @@
   "cyberware.container.engineering": "サイバーウェア工作台",
   "cyberware.container.scanner": "スキャナー",
   "cyberware.container.blueprint_archive": "設計図保管棚",
-  "cyberware.container.component_box": "部品ボックス"
+  "cyberware.container.component_box": "部品ボックス",
+  "item.cyberware.cyberzombie_spawn_egg": "サイバーゾンビのスポーンエッグ",
+  "attribute.cyberware.tolerance": "耐性",
+  "cyberware.gui.menu": "サイバーウェアメニュー",
+  "cyberware.gui.hud_configuration": "HUDの設定"
 }

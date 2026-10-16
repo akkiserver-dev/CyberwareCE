@@ -17,7 +17,7 @@ import java.util.Map;
  * The quality of a piece of cyberware (e.g. scavenged from a mob or manufactured).
  * Qualities are identified by their translation key, which is also what gets saved on the stack.
  */
-public final class Quality {
+public record Quality(String translationKey, @Nullable String nameModifier, @Nullable String spriteSuffix) {
     private static final Map<String, Quality> BY_NAME = new HashMap<>();
     private static final List<Quality> QUALITIES = new ArrayList<>();
 
@@ -26,15 +26,9 @@ public final class Quality {
                 Quality quality = byName(name);
                 return quality != null ? DataResult.success(quality) : DataResult.error(() -> "Unknown cyberware quality: " + name);
             },
-            Quality::getTranslationKey);
+            Quality::translationKey);
 
-    public static final StreamCodec<ByteBuf, Quality> STREAM_CODEC = ByteBufCodecs.STRING_UTF8.map(Quality::byName, Quality::getTranslationKey);
-
-    private final String translationKey;
-    @Nullable
-    private final String nameModifier;
-    @Nullable
-    private final String spriteSuffix;
+    public static final StreamCodec<ByteBuf, Quality> STREAM_CODEC = ByteBufCodecs.STRING_UTF8.map(Quality::byName, Quality::translationKey);
 
     public Quality(String translationKey) {
         this(translationKey, null, null);
@@ -51,20 +45,6 @@ public final class Quality {
         this.spriteSuffix = spriteSuffix;
         BY_NAME.put(translationKey, this);
         QUALITIES.add(this);
-    }
-
-    public String getTranslationKey() {
-        return translationKey;
-    }
-
-    @Nullable
-    public String getNameModifier() {
-        return nameModifier;
-    }
-
-    @Nullable
-    public String getSpriteSuffix() {
-        return spriteSuffix;
     }
 
     @Nullable

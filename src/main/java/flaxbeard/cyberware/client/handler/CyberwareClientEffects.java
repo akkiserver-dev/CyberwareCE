@@ -140,7 +140,8 @@ public final class CyberwareClientEffects {
         double rangeSquared = HIGHLIGHT_RANGE * HIGHLIGHT_RANGE;
         for (LivingEntity entity : player.level().getEntitiesOfClass(LivingEntity.class, player.getBoundingBox().inflate(HIGHLIGHT_RANGE))) {
             if (entity != player && !entity.isCurrentlyGlowing() && player.distanceToSqr(entity) <= rangeSquared) {
-                entity.setGlowingTag(true);
+                // setGlowingTag doesn't change the synced flag the client renders from
+                entity.setSharedFlag(Entity.FLAG_GLOWING, true);
                 HIGHLIGHTED.add(entity);
             }
         }
@@ -149,7 +150,7 @@ public final class CyberwareClientEffects {
     @SubscribeEvent
     public static void endHighlight(RenderFrameEvent.Post event) {
         for (LivingEntity entity : HIGHLIGHTED) {
-            entity.setGlowingTag(false);
+            entity.setSharedFlag(Entity.FLAG_GLOWING, false);
         }
         HIGHLIGHTED.clear();
     }

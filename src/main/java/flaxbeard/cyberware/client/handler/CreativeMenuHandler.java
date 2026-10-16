@@ -92,7 +92,7 @@ public final class CreativeMenuHandler {
             this.screen = screen;
             this.scavenged = scavenged;
             setTooltip(Tooltip.create(Component.translatable(
-                    (scavenged ? CyberwareAPI.QUALITY_SCAVENGED : CyberwareAPI.QUALITY_MANUFACTURED).getTranslationKey())));
+                    (scavenged ? CyberwareAPI.QUALITY_SCAVENGED : CyberwareAPI.QUALITY_MANUFACTURED).translationKey())));
         }
 
         private int offset() {

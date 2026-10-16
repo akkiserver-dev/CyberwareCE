@@ -354,5 +354,6 @@
   "cyberware.container.engineering": "Кибер-верстак",
   "cyberware.container.scanner": "Сканер",
   "cyberware.container.blueprint_archive": "Архив чертежей",
-  "cyberware.container.component_box": "Коробка частей"
+  "cyberware.container.component_box": "Коробка частей",
+  "item.cyberware.cyberzombie_spawn_egg": "Яйцо призыва кибер-зомби"
 }
