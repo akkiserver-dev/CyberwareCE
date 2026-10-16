@@ -1,6 +1,8 @@
 # Cyberware Community Edition
 
-CyberwareCE is a ported version for Minecraft 1.21 and NeoForge.
+This is a ported version for Minecraft 1.21 and NeoForge.
+
+This project using AI in part to port original mod.
 
 Cyberware/RoboticParts is a Minecraft mod for versions 1.9.4 through 1.12.2 that allows for augmentation of the human body.
 
