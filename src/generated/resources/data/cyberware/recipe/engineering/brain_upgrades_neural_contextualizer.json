@@ -1,0 +1,21 @@
+{
+  "type": "cyberware:engineering",
+  "ingredients": [
+    {
+      "count": 1,
+      "item": "cyberware:component_ssc"
+    },
+    {
+      "count": 1,
+      "item": "cyberware:component_fullerene"
+    },
+    {
+      "count": 3,
+      "item": "cyberware:component_synthnerves"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "cyberware:brain_upgrades_neural_contextualizer"
+  }
+}

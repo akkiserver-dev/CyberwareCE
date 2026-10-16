@@ -3,7 +3,6 @@ package flaxbeard.cyberware.client.handler;
 import com.mojang.blaze3d.platform.InputConstants;
 import flaxbeard.cyberware.api.CyberwareAPI;
 import flaxbeard.cyberware.api.item.Cyberware;
-import flaxbeard.cyberware.api.item.Deconstructable;
 import flaxbeard.cyberware.api.item.Quality;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.KeyMapping;
@@ -59,7 +58,7 @@ public final class TooltipHandler {
             if (quality != null) {
                 tooltip.add(Component.translatable(quality.translationKey()));
             }
-        } else if (stack.getItem() instanceof Deconstructable) {
+        } else if (CyberwareAPI.canDeconstruct(stack)) {
             Component line = Component.translatable("cyberware.tooltip.can_deconstruct").withStyle(ChatFormatting.DARK_GRAY);
             if (tooltip.size() > 1) {
                 tooltip.add(1, line);

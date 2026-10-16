@@ -2,11 +2,11 @@ package flaxbeard.cyberware.api;
 
 import flaxbeard.cyberware.CyberwareMod;
 import flaxbeard.cyberware.api.item.Cyberware;
-import flaxbeard.cyberware.api.item.Deconstructable;
 import flaxbeard.cyberware.api.item.MenuItem;
 import flaxbeard.cyberware.api.item.Quality;
 import flaxbeard.cyberware.common.entity.CyberZombie;
 import flaxbeard.cyberware.common.network.CyberwareSyncPayload;
+import flaxbeard.cyberware.common.recipe.Deconstruction;
 import flaxbeard.cyberware.common.registry.CyberwareAttachments;
 import flaxbeard.cyberware.common.registry.CyberwareDataComponents;
 import net.minecraft.nbt.CompoundTag;
@@ -123,21 +123,11 @@ public final class CyberwareAPI {
         throw new IllegalArgumentException("Cannot call getCyberware on a non-cyberware item: " + stack);
     }
 
+    /**
+     * @return whether the item has a deconstruction loot table, see {@link Deconstruction}
+     */
     public static boolean canDeconstruct(ItemStack stack) {
-        return !stack.isEmpty()
-                && stack.getItem() instanceof Deconstructable deconstructable
-                && deconstructable.canDestroy(stack);
-    }
-
-    public static List<ItemStack> getComponents(ItemStack stack) {
-        if (!stack.isEmpty() && stack.getItem() instanceof Deconstructable deconstructable) {
-            List<ItemStack> components = new ArrayList<>();
-            for (ItemStack component : deconstructable.getComponents(stack)) {
-                components.add(component.copy());
-            }
-            return components;
-        }
-        throw new IllegalArgumentException("Cannot call getComponents on a non-deconstructable item: " + stack);
+        return Deconstruction.canDeconstruct(stack);
     }
 
     // ---- user data ----

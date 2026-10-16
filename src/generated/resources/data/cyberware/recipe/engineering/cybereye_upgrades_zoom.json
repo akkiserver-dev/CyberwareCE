@@ -1,0 +1,17 @@
+{
+  "type": "cyberware:engineering",
+  "ingredients": [
+    {
+      "count": 2,
+      "item": "cyberware:component_fiberoptics"
+    },
+    {
+      "count": 4,
+      "item": "cyberware:component_synthnerves"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "cyberware:cybereye_upgrades_zoom"
+  }
+}

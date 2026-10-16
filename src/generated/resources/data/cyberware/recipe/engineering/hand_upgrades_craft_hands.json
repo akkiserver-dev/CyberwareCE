@@ -1,0 +1,21 @@
+{
+  "type": "cyberware:engineering",
+  "ingredients": [
+    {
+      "count": 4,
+      "item": "cyberware:component_actuator"
+    },
+    {
+      "count": 1,
+      "item": "cyberware:component_ssc"
+    },
+    {
+      "count": 1,
+      "item": "cyberware:component_plating"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "cyberware:hand_upgrades_craft_hands"
+  }
+}

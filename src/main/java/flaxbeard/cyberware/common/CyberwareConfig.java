@@ -54,6 +54,7 @@ public final class CyberwareConfig {
     public static final ModConfigSpec.BooleanValue DEFAULT_DROP;
     public static final ModConfigSpec.BooleanValue DEFAULT_KEEP;
     public static final ModConfigSpec.DoubleValue DROP_CHANCE;
+    public static final ModConfigSpec.DoubleValue SCAVENGED_CHANCE;
 
     // Other
     public static final ModConfigSpec.BooleanValue SURGERY_CRAFTING;
@@ -98,14 +99,17 @@ public final class CyberwareConfig {
         builder.pop();
 
         builder.push("gamerules");
-        DEFAULT_DROP = builder.comment("Default for gamerule cyberware_dropCyberware",
-                "Determines if players drop their Cyberware on death. Does not change settings on existing worlds, use /gamerule for that. Overridden if cyberware_keepCyberware is true")
-                .define("defaultDrop", false);
-        DEFAULT_KEEP = builder.comment("Default for gamerule cyberware_keepCyberware",
+        DEFAULT_DROP = builder.comment("Default for gamerule dropCyberware",
+                "Determines if players drop their Cyberware on death. Does not change settings on existing worlds, use /gamerule for that. Overridden if keepCyberware is true")
+                .define("defaultDrop", true);
+        DEFAULT_KEEP = builder.comment("Default for gamerule keepCyberware",
                 "Determines if players keep their Cyberware between lives. Does not change settings on existing worlds, use /gamerule for that.")
                 .define("defaultKeep", false);
         DROP_CHANCE = builder.comment("Chance of successful drop", "If dropCyberware enabled, chance for a piece of Cyberware to successfully drop instead of being destroyed.")
-                .defineInRange("dropChance", 100.0, 0.0, 100.0);
+                .defineInRange("dropChance", 40.0, 0.0, 100.0);
+        SCAVENGED_CHANCE = builder.comment("Chance of Cyberware becoming scavenged",
+                "Determines the chance for a dropped piece of Cyberware to become used. Only applies when Cyberware successfully drops on player death.")
+                .defineInRange("scavengedChance", 75.0, 0.0, 100.0);
         builder.pop();
 
         builder.push("other");

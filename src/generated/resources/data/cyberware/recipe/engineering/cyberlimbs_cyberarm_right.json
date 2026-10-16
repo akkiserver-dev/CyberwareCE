@@ -1,0 +1,29 @@
+{
+  "type": "cyberware:engineering",
+  "ingredients": [
+    {
+      "count": 4,
+      "item": "cyberware:component_actuator"
+    },
+    {
+      "count": 2,
+      "item": "cyberware:component_titanium"
+    },
+    {
+      "count": 2,
+      "item": "cyberware:component_plating"
+    },
+    {
+      "count": 1,
+      "item": "cyberware:component_fiberoptics"
+    },
+    {
+      "count": 1,
+      "item": "cyberware:component_synthnerves"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "cyberware:cyberlimbs_cyberarm_right"
+  }
+}

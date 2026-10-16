@@ -1,0 +1,25 @@
+{
+  "type": "cyberware:engineering",
+  "ingredients": [
+    {
+      "count": 2,
+      "item": "cyberware:component_actuator"
+    },
+    {
+      "count": 1,
+      "item": "cyberware:component_titanium"
+    },
+    {
+      "count": 1,
+      "item": "cyberware:component_plating"
+    },
+    {
+      "count": 2,
+      "item": "cyberware:component_fullerene"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "cyberware:hand_upgrades_mining"
+  }
+}

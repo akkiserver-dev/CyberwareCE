@@ -1,0 +1,21 @@
+{
+  "type": "cyberware:engineering",
+  "ingredients": [
+    {
+      "count": 3,
+      "item": "cyberware:component_titanium"
+    },
+    {
+      "count": 1,
+      "item": "cyberware:component_plating"
+    },
+    {
+      "count": 1,
+      "item": "cyberware:component_fiberoptics"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "cyberware:leg_upgrades_fall_damage"
+  }
+}

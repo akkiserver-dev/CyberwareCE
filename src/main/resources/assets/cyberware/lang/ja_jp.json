@@ -359,5 +359,14 @@
   "item.cyberware.cyberzombie_spawn_egg": "サイバーゾンビのスポーンエッグ",
   "attribute.cyberware.tolerance": "耐性",
   "cyberware.gui.menu": "サイバーウェアメニュー",
-  "cyberware.gui.hud_configuration": "HUDの設定"
+  "cyberware.gui.hud_configuration": "HUDの設定",
+  "jei.cyberware.engineering": "サイバーウェアの組み立て",
+  "jei.cyberware.deconstruction": "分解",
+  "jei.cyberware.scanning": "スキャン",
+  "jei.cyberware.not_consumed": "消費されません",
+  "jei.cyberware.paper": "任意: 設計図ができると1枚消費します",
+  "jei.cyberware.components_lost": "部品のうち%1$s個がランダムに失われます",
+  "jei.cyberware.components_lost.damaged": "損傷したアイテムはさらに多く失われます",
+  "jei.cyberware.scan_time": "スキャン1回に%1$s分%2$s秒",
+  "jei.cyberware.chance_per_item": "1個増えるごとに+%1$s (最大%2$s)"
 }

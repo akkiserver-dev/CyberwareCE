@@ -1,0 +1,21 @@
+{
+  "type": "cyberware:engineering",
+  "ingredients": [
+    {
+      "count": 1,
+      "item": "cyberware:component_reactor"
+    },
+    {
+      "count": 2,
+      "item": "cyberware:component_titanium"
+    },
+    {
+      "count": 2,
+      "item": "cyberware:component_fullerene"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "cyberware:bone_upgrades_bonelacing"
+  }
+}

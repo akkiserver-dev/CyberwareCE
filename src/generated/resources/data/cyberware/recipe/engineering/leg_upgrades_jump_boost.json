@@ -1,0 +1,17 @@
+{
+  "type": "cyberware:engineering",
+  "ingredients": [
+    {
+      "count": 2,
+      "item": "cyberware:component_actuator"
+    },
+    {
+      "count": 2,
+      "item": "cyberware:component_titanium"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "cyberware:leg_upgrades_jump_boost"
+  }
+}

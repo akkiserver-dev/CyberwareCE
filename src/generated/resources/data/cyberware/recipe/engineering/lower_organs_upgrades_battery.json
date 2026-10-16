@@ -1,0 +1,21 @@
+{
+  "type": "cyberware:engineering",
+  "ingredients": [
+    {
+      "count": 1,
+      "item": "cyberware:component_reactor"
+    },
+    {
+      "count": 2,
+      "item": "cyberware:component_storage"
+    },
+    {
+      "count": 3,
+      "item": "cyberware:component_microelectric"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "cyberware:lower_organs_upgrades_battery"
+  }
+}

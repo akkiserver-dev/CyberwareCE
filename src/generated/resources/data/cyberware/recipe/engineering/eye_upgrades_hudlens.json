@@ -1,0 +1,25 @@
+{
+  "type": "cyberware:engineering",
+  "ingredients": [
+    {
+      "count": 1,
+      "item": "cyberware:component_ssc"
+    },
+    {
+      "count": 1,
+      "item": "cyberware:component_fiberoptics"
+    },
+    {
+      "count": 1,
+      "item": "cyberware:component_fullerene"
+    },
+    {
+      "count": 2,
+      "item": "cyberware:component_synthnerves"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "cyberware:eye_upgrades_hudlens"
+  }
+}

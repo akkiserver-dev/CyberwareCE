@@ -1,0 +1,27 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "cyberware:config",
+      "option": "clothes"
+    }
+  ],
+  "type": "cyberware:engineering",
+  "ingredients": [
+    {
+      "count": 2,
+      "item": "cyberware:component_titanium"
+    },
+    {
+      "count": 12,
+      "item": "minecraft:leather"
+    },
+    {
+      "count": 1,
+      "item": "minecraft:black_dye"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "cyberware:trenchcoat"
+  }
+}

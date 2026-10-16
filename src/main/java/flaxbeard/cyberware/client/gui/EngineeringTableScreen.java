@@ -7,6 +7,7 @@ import flaxbeard.cyberware.common.block.entity.EngineeringTableBlockEntity;
 import flaxbeard.cyberware.common.menu.EngineeringTableMenu;
 import flaxbeard.cyberware.common.network.EngineeringDestroyPayload;
 import flaxbeard.cyberware.common.network.EngineeringSwitchPayload;
+import flaxbeard.cyberware.common.recipe.EngineeringRecipe;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.AbstractButton;
 import net.minecraft.client.gui.narration.NarrationElementOutput;
@@ -112,20 +113,22 @@ public class EngineeringTableScreen extends AbstractContainerScreen<EngineeringT
     private void renderMissingRequirements(GuiGraphics graphics) {
         EngineeringTableBlockEntity table = menu.getTable();
         ItemStack blueprintStack = table.slots.getStackInSlot(EngineeringTableBlockEntity.SLOT_BLUEPRINT);
-        if (!(blueprintStack.getItem() instanceof Blueprint blueprint)) return;
+        if (!(blueprintStack.getItem() instanceof Blueprint blueprint) || minecraft.level == null) return;
+        EngineeringRecipe recipe = EngineeringRecipe.findFor(minecraft.level.getRecipeManager(), blueprint.getTarget(blueprintStack)).orElse(null);
+        if (recipe == null) return;
 
+        List<ItemStack> crafting = new ArrayList<>();
+        for (int slot = EngineeringTableBlockEntity.SLOT_CRAFTING_START; slot < EngineeringTableBlockEntity.SLOT_CRAFTING_END; slot++) {
+            crafting.add(table.slots.getStackInSlot(slot));
+        }
+        int[] missingCounts = recipe.getMissing(crafting);
         List<ItemStack> missing = new ArrayList<>();
-        for (ItemStack required : blueprint.getRequirementsForDisplay(blueprintStack)) {
-            int count = required.getCount();
-            for (int slot = EngineeringTableBlockEntity.SLOT_CRAFTING_START; slot < EngineeringTableBlockEntity.SLOT_CRAFTING_END; slot++) {
-                ItemStack crafting = table.slots.getStackInSlot(slot);
-                if (ItemStack.isSameItem(crafting, required)
-                        && (required.getComponentsPatch().isEmpty() || ItemStack.isSameItemSameComponents(required, crafting))) {
-                    count -= crafting.getCount();
-                }
-            }
-            if (count > 0) {
-                missing.add(required.copyWithCount(count));
+        for (int index = 0; index < missingCounts.length; index++) {
+            ItemStack[] options = recipe.ingredients().get(index).ingredient().getItems();
+            if (missingCounts[index] > 0 && options.length > 0) {
+                // cycle through the accepted items, like in the recipe book
+                ItemStack shown = options[(int) (minecraft.level.getGameTime() / 20 % options.length)];
+                missing.add(shown.copyWithCount(missingCounts[index]));
             }
         }
 

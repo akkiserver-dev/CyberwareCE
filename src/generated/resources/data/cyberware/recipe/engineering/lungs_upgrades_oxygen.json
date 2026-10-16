@@ -1,0 +1,17 @@
+{
+  "type": "cyberware:engineering",
+  "ingredients": [
+    {
+      "count": 2,
+      "item": "cyberware:component_reactor"
+    },
+    {
+      "count": 2,
+      "item": "cyberware:component_storage"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "cyberware:lungs_upgrades_oxygen"
+  }
+}

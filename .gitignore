@@ -119,3 +119,6 @@ runs/
 # Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
 !gradle-wrapper.jar
 
+
+# Bookkeeping of the data generators (gradlew runData); the generated files themselves are committed
+src/generated/resources/.cache/

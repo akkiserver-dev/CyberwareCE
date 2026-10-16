@@ -1,0 +1,21 @@
+{
+  "type": "cyberware:engineering",
+  "ingredients": [
+    {
+      "count": 2,
+      "item": "cyberware:component_reactor"
+    },
+    {
+      "count": 1,
+      "item": "cyberware:component_synthnerves"
+    },
+    {
+      "count": 2,
+      "item": "cyberware:component_storage"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "cyberware:brain_upgrades_cortical_stack"
+  }
+}

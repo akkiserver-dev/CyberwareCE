@@ -25,6 +25,8 @@ public class ScannerBlockEntity extends NameableBlockEntity {
     public static final int SLOT_INPUT = 0;
     public static final int SLOT_PAPER = 1;
     public static final int SLOT_OUTPUT = 2;
+    /** The highest chance of a scan in percent. */
+    public static final float MAX_CHANCE = 50F;
 
     public final ItemStackHandler slots = new ItemStackHandler(3) {
         @Override
@@ -76,9 +78,9 @@ public class ScannerBlockEntity extends NameableBlockEntity {
         CyberwareConfig.Synced config = CyberwareConfig.get(level);
         float chance = config.scannerChance() + config.scannerChanceAdditional() * (toScan.getCount() - 1);
         if (toScan.isDamageableItem()) {
-            chance = 50F * (1F - toScan.getDamageValue() / (float) toScan.getMaxDamage());
+            chance = MAX_CHANCE * (1F - toScan.getDamageValue() / (float) toScan.getMaxDamage());
         }
-        return Math.min(chance, 50F);
+        return Math.min(chance, MAX_CHANCE);
     }
 
     public static void tick(Level level, BlockPos pos, BlockState state, ScannerBlockEntity scanner) {

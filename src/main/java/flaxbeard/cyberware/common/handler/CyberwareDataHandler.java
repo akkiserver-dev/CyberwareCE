@@ -72,9 +72,9 @@ public final class CyberwareDataHandler {
      * Registers the game rules; called once the config is loaded since it provides their defaults.
      */
     public static void registerGameRules() {
-        KEEP_WARE_GAMERULE = GameRules.register("cyberware_keepCyberware", GameRules.Category.PLAYER,
+        KEEP_WARE_GAMERULE = GameRules.register("keepCyberware", GameRules.Category.PLAYER,
                 GameRules.BooleanValue.create(CyberwareConfig.DEFAULT_KEEP.get()));
-        DROP_WARE_GAMERULE = GameRules.register("cyberware_dropCyberware", GameRules.Category.PLAYER,
+        DROP_WARE_GAMERULE = GameRules.register("dropCyberware", GameRules.Category.PLAYER,
                 GameRules.BooleanValue.create(CyberwareConfig.DEFAULT_DROP.get()));
     }
 
@@ -128,7 +128,11 @@ public final class CyberwareDataHandler {
         GameRules rules = player.level().getGameRules();
         boolean keep = rules.getBoolean(KEEP_WARE_GAMERULE);
         boolean drop = rules.getBoolean(DROP_WARE_GAMERULE);
-        if (!((drop && !keep) || (keep && CyberwareDamageTypes.isMissingEssential(event.getSource())))) return;
+
+        boolean shouldDrop = drop && !keep;
+        boolean shouldDropOnEssentialLoss = keep && CyberwareDamageTypes.isMissingEssential(event.getSource());
+
+        if (!shouldDrop && !shouldDropOnEssentialLoss) return;
 
         CyberwareUserData data = CyberwareAPI.getUserData(player);
         if (data == null) return;
@@ -149,7 +153,11 @@ public final class CyberwareDataHandler {
                     }
                 }
                 if (!isDefault && player.getRandom().nextFloat() < CyberwareConfig.DROP_CHANCE.get() / 100F) {
-                    event.getDrops().add(new ItemEntity(player.level(), player.getX(), player.getY(), player.getZ(), CyberwareAPI.sanitize(toDrop)));
+                    ItemStack stack = CyberwareAPI.sanitize(toDrop);
+                    if (player.getRandom().nextFloat() < CyberwareConfig.SCAVENGED_CHANCE.get() / 100F) {
+                        CyberwareAPI.writeQuality(stack, CyberwareAPI.QUALITY_SCAVENGED);
+                    }
+                    event.getDrops().add(new ItemEntity(player.level(), player.getX(), player.getY(), player.getZ(), stack));
                 }
             }
         }
@@ -160,7 +168,7 @@ public final class CyberwareDataHandler {
 
     private static boolean isZombie(Entity entity) {
         if (entity instanceof ZombifiedPiglin) return false;
-        return entity instanceof Zombie || BuiltInRegistries.ENTITY_TYPE.getKey(entity.getType()).getPath().contains("ombie");
+        return entity instanceof Zombie || BuiltInRegistries.ENTITY_TYPE.getKey(entity.getType()).getPath().contains("zombie" /* Old code was using "ombie" to check, but its typo? ill collect it here... */);
     }
 
     private static boolean isNaturalSpawn(MobSpawnType type) {

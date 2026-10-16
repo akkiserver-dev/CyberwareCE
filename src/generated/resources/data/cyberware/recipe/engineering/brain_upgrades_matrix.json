@@ -1,0 +1,21 @@
+{
+  "type": "cyberware:engineering",
+  "ingredients": [
+    {
+      "count": 3,
+      "item": "cyberware:component_ssc"
+    },
+    {
+      "count": 1,
+      "item": "cyberware:component_fiberoptics"
+    },
+    {
+      "count": 2,
+      "item": "cyberware:component_microelectric"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "cyberware:brain_upgrades_matrix"
+  }
+}

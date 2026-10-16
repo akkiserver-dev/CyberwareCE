@@ -2,6 +2,7 @@ package flaxbeard.cyberware.common.item;
 
 import flaxbeard.cyberware.api.CyberwareAPI;
 import flaxbeard.cyberware.api.item.Blueprint;
+import flaxbeard.cyberware.common.recipe.EngineeringRecipe;
 import flaxbeard.cyberware.common.registry.CyberwareDataComponents;
 import flaxbeard.cyberware.common.registry.CyberwareItems;
 import net.minecraft.ChatFormatting;
@@ -10,12 +11,16 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.ItemContainerContents;
+import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.Level;
+import net.neoforged.neoforge.common.crafting.SizedIngredient;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 /**
- * A blueprint stores the item it was made from; at the Engineering Table it crafts that item from its components.
+ * A blueprint stores the item it was made from; at the Engineering Table it crafts that item from its components,
+ * see {@link EngineeringRecipe}.
  * A blueprint without a stored item is blank and can be turned into a blueprint by crafting it with an item.
  */
 public class BlueprintItem extends Item implements Blueprint {
@@ -36,28 +41,18 @@ public class BlueprintItem extends Item implements Blueprint {
      * @return a blueprint of the given item, or {@link ItemStack#EMPTY} if it can't be deconstructed
      */
     public static ItemStack getBlueprintForItem(ItemStack stack) {
-        if (!CyberwareAPI.canDeconstruct(stack)) {
-            return ItemStack.EMPTY;
-        }
+        return CyberwareAPI.canDeconstruct(stack) ? createBlueprint(stack.getItem()) : ItemStack.EMPTY;
+    }
+
+    /**
+     * @return a blueprint of the given item, without checking whether it can be deconstructed
+     */
+    public static ItemStack createBlueprint(ItemLike item) {
         // store a pristine copy: no damage, quality or other data
-        ItemStack stored = new ItemStack(stack.getItem());
+        ItemStack stored = new ItemStack(item);
         ItemStack blueprint = new ItemStack(CyberwareItems.BLUEPRINT.get());
         blueprint.set(CyberwareDataComponents.BLUEPRINT_ITEM, ItemContainerContents.fromItems(List.of(stored)));
         return blueprint;
-    }
-
-    private static List<ItemStack> getRequirements(ItemStack blueprint) {
-        ItemStack stored = getBlueprintItem(blueprint);
-        if (!stored.isEmpty() && CyberwareAPI.canDeconstruct(stored)) {
-            return CyberwareAPI.getComponents(stored);
-        }
-        return null;
-    }
-
-    private static boolean matches(ItemStack crafting, ItemStack required) {
-        return !crafting.isEmpty()
-                && ItemStack.isSameItem(crafting, required)
-                && (required.getComponentsPatch().isEmpty() || ItemStack.isSameItemSameComponents(required, crafting));
     }
 
     @Override
@@ -65,12 +60,14 @@ public class BlueprintItem extends Item implements Blueprint {
         ItemStack stored = getBlueprintItem(stack);
         if (!stored.isEmpty()) {
             if (flag.hasShiftDown()) {
-                List<ItemStack> requirements = getRequirements(stack);
-                if (requirements != null) {
+                Level level = context.level();
+                Optional<EngineeringRecipe> recipe = level == null ? Optional.empty() : EngineeringRecipe.findFor(level.getRecipeManager(), stored);
+                if (recipe.isPresent()) {
                     tooltip.add(Component.translatable("cyberware.tooltip.blueprint", stored.getHoverName()));
-                    for (ItemStack requirement : requirements) {
-                        if (!requirement.isEmpty()) {
-                            tooltip.add(Component.literal(requirement.getCount() + " x ").append(requirement.getHoverName()));
+                    for (SizedIngredient ingredient : recipe.get().ingredients()) {
+                        ItemStack[] items = ingredient.ingredient().getItems();
+                        if (items.length > 0) {
+                            tooltip.add(Component.literal(ingredient.count() + " x ").append(items[0].getHoverName()));
                         }
                     }
                     return;
@@ -93,59 +90,7 @@ public class BlueprintItem extends Item implements Blueprint {
     }
 
     @Override
-    public ItemStack getResult(ItemStack stack, List<ItemStack> craftingItems) {
-        List<ItemStack> requirements = getRequirements(stack);
-        if (requirements == null) return ItemStack.EMPTY;
-
-        for (ItemStack requirement : requirements) {
-            int missing = requirement.getCount();
-            for (ItemStack crafting : craftingItems) {
-                if (matches(crafting, requirement)) {
-                    missing -= crafting.getCount();
-                }
-                if (missing <= 0) break;
-            }
-            if (missing > 0) return ItemStack.EMPTY;
-        }
-        return getBlueprintItem(stack).copy();
-    }
-
-    @Override
-    public List<ItemStack> consumeItems(ItemStack stack, List<ItemStack> craftingItems) {
-        List<ItemStack> requirements = getRequirements(stack);
-        if (requirements == null) {
-            throw new IllegalStateException("Consuming items when items shouldn't be consumed!");
-        }
-
-        List<ItemStack> remaining = new ArrayList<>();
-        for (ItemStack crafting : craftingItems) {
-            remaining.add(crafting.copy());
-        }
-        for (ItemStack requirement : requirements) {
-            int missing = requirement.getCount();
-            for (int index = 0; index < remaining.size() && missing > 0; index++) {
-                ItemStack crafting = remaining.get(index);
-                if (matches(crafting, requirement)) {
-                    int toSubtract = Math.min(missing, crafting.getCount());
-                    missing -= toSubtract;
-                    crafting.shrink(toSubtract);
-                    if (crafting.isEmpty()) {
-                        remaining.set(index, ItemStack.EMPTY);
-                    }
-                }
-            }
-        }
-        return remaining;
-    }
-
-    @Override
-    public List<ItemStack> getRequirementsForDisplay(ItemStack stack) {
-        List<ItemStack> requirements = getRequirements(stack);
-        return requirements == null ? List.of() : requirements;
-    }
-
-    @Override
-    public ItemStack getIconForDisplay(ItemStack stack) {
-        return getBlueprintItem(stack);
+    public ItemStack getTarget(ItemStack blueprint) {
+        return getBlueprintItem(blueprint);
     }
 }

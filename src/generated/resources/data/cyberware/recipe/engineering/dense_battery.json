@@ -1,0 +1,17 @@
+{
+  "type": "cyberware:engineering",
+  "ingredients": [
+    {
+      "count": 3,
+      "item": "cyberware:component_fullerene"
+    },
+    {
+      "count": 4,
+      "item": "cyberware:component_microelectric"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "cyberware:dense_battery"
+  }
+}

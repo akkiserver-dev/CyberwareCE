@@ -1,0 +1,23 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "cyberware:config",
+      "option": "clothes"
+    }
+  ],
+  "type": "cyberware:engineering",
+  "ingredients": [
+    {
+      "count": 4,
+      "item": "minecraft:black_stained_glass"
+    },
+    {
+      "count": 1,
+      "item": "cyberware:component_plating"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "cyberware:shades"
+  }
+}

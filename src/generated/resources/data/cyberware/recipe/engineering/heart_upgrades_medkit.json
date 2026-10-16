@@ -1,0 +1,21 @@
+{
+  "type": "cyberware:engineering",
+  "ingredients": [
+    {
+      "count": 3,
+      "item": "cyberware:component_reactor"
+    },
+    {
+      "count": 1,
+      "item": "cyberware:component_fullerene"
+    },
+    {
+      "count": 1,
+      "item": "cyberware:component_synthnerves"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "cyberware:heart_upgrades_medkit"
+  }
+}

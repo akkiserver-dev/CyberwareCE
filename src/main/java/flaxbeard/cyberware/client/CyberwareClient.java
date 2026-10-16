@@ -25,6 +25,7 @@ import flaxbeard.cyberware.client.render.TrenchCoatModel;
 import flaxbeard.cyberware.common.CyberwareConfig;
 import flaxbeard.cyberware.common.effect.CyberwareMobEffect;
 import flaxbeard.cyberware.common.item.BlueprintItem;
+import flaxbeard.cyberware.common.recipe.Deconstruction;
 import flaxbeard.cyberware.common.item.CyberwareArmorItem;
 import flaxbeard.cyberware.common.registry.CyberwareBlockEntities;
 import flaxbeard.cyberware.common.registry.CyberwareEffects;
@@ -65,6 +66,7 @@ import net.neoforged.neoforge.client.gui.VanillaGuiLayers;
 import net.neoforged.neoforge.common.NeoForge;
 
 import javax.annotation.Nullable;
+import java.util.Map;
 
 @Mod(value = CyberwareMod.MOD_ID, dist = Dist.CLIENT)
 public class CyberwareClient {
@@ -91,7 +93,10 @@ public class CyberwareClient {
         NeoForge.EVENT_BUS.register(TooltipHandler.class);
         NeoForge.EVENT_BUS.register(CreativeMenuHandler.class);
         NeoForge.EVENT_BUS.register(FineManipulatorsButtonHandler.class);
-        NeoForge.EVENT_BUS.addListener((ClientPlayerNetworkEvent.LoggingOut event) -> CyberwareConfig.setFromServer(null));
+        NeoForge.EVENT_BUS.addListener((ClientPlayerNetworkEvent.LoggingOut event) -> {
+            CyberwareConfig.setFromServer(null);
+            Deconstruction.setPreviews(Map.of());
+        });
     }
 
     private static void clientSetup(FMLClientSetupEvent event) {

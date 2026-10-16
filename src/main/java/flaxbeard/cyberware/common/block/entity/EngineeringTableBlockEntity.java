@@ -5,6 +5,8 @@ import flaxbeard.cyberware.api.item.Blueprint;
 import flaxbeard.cyberware.common.CyberwareConfig;
 import flaxbeard.cyberware.common.item.BlueprintItem;
 import flaxbeard.cyberware.common.network.EngineeringSmashPayload;
+import flaxbeard.cyberware.common.recipe.Deconstruction;
+import flaxbeard.cyberware.common.recipe.EngineeringRecipe;
 import flaxbeard.cyberware.common.registry.CyberwareBlockEntities;
 import flaxbeard.cyberware.common.registry.CyberwareTags;
 import net.minecraft.core.BlockPos;
@@ -15,7 +17,9 @@ import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.NbtUtils;
 import net.minecraft.nbt.Tag;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.Difficulty;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.items.IItemHandler;
@@ -27,6 +31,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 /**
  * Destroys cyberware into components (sometimes producing a blueprint) and crafts cyberware from blueprints.
@@ -106,6 +111,16 @@ public class EngineeringTableBlockEntity extends NameableBlockEntity {
         return chance;
     }
 
+    /**
+     * @return how many components are lost at random when destroying an undamaged item
+     */
+    public static int getComponentsLost(Difficulty difficulty) {
+        return switch (difficulty) {
+            case NORMAL, HARD -> 2;
+            default -> 1;
+        };
+    }
+
     private List<ItemStack> getCraftingItems() {
         List<ItemStack> items = new ArrayList<>();
         for (int slot = SLOT_CRAFTING_START; slot < SLOT_CRAFTING_END; slot++) {
@@ -114,27 +129,30 @@ public class EngineeringTableBlockEntity extends NameableBlockEntity {
         return items;
     }
 
+    /**
+     * @return the recipe matching the blueprint and the crafting slots
+     */
+    private Optional<RecipeHolder<EngineeringRecipe>> findRecipe() {
+        if (level == null || !(slots.getStackInSlot(SLOT_BLUEPRINT).getItem() instanceof Blueprint blueprint)) {
+            return Optional.empty();
+        }
+        return EngineeringRecipe.find(level, blueprint.getTarget(slots.getStackInSlot(SLOT_BLUEPRINT)), getCraftingItems());
+    }
+
     public void updateRecipe() {
         updatingRecipe = true;
-        ItemStack blueprintStack = slots.getStackInSlot(SLOT_BLUEPRINT);
-        if (blueprintStack.getItem() instanceof Blueprint blueprint) {
-            ItemStack result = blueprint.getResult(blueprintStack, getCraftingItems()).copy();
-            if (!result.isEmpty()) {
-                result.setCount(1);
-            }
-            slots.setStackInSlot(SLOT_RESULT, result);
-        } else {
-            slots.setStackInSlot(SLOT_RESULT, ItemStack.EMPTY);
+        ItemStack result = findRecipe().map(recipe -> recipe.value().result().copy()).orElse(ItemStack.EMPTY);
+        if (!result.isEmpty()) {
+            result.setCount(1);
         }
+        slots.setStackInSlot(SLOT_RESULT, result);
         updatingRecipe = false;
     }
 
     public void subtractResources() {
-        ItemStack blueprintStack = slots.getStackInSlot(SLOT_BLUEPRINT);
-        if (!(blueprintStack.getItem() instanceof Blueprint blueprint)) {
-            throw new IllegalStateException("Tried to subtract resources when no blueprint was available!");
-        }
-        List<ItemStack> remaining = blueprint.consumeItems(blueprintStack, getCraftingItems());
+        EngineeringRecipe recipe = findRecipe().map(RecipeHolder::value)
+                .orElseThrow(() -> new IllegalStateException("Tried to subtract resources without a matching recipe!"));
+        List<ItemStack> remaining = recipe.consume(getCraftingItems());
         updatingRecipe = true;
         for (int index = 0; index < remaining.size(); index++) {
             slots.setStackInSlot(SLOT_CRAFTING_START + index, remaining.get(index));
@@ -153,7 +171,8 @@ public class EngineeringTableBlockEntity extends NameableBlockEntity {
 
         ItemStack paper = slots.getStackInSlot(SLOT_PAPER);
         boolean doBlueprint = !paper.isEmpty() && paper.is(CyberwareTags.PAPER);
-        List<ItemStack> components = CyberwareAPI.getComponents(toDestroy);
+        // the loot table gives all the components, some are lost below
+        List<ItemStack> components = Deconstruction.rollComponents((ServerLevel) level, worldPosition, toDestroy, null);
 
         // pick the components that survive
         List<ItemStack> drops = new ArrayList<>();
@@ -162,10 +181,7 @@ public class EngineeringTableBlockEntity extends NameableBlockEntity {
                 drops.add(component.copyWithCount(1));
             }
         }
-        int numToRemove = switch (level.getDifficulty()) {
-            case NORMAL, HARD -> 2;
-            default -> 1;
-        };
+        int numToRemove = getComponentsLost(level.getDifficulty());
         if (toDestroy.isDamageableItem()) {
             // damaged items yield less
             float percent = toDestroy.getDamageValue() / (float) toDestroy.getMaxDamage();

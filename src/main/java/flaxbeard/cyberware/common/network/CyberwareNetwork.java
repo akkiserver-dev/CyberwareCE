@@ -17,6 +17,7 @@ public final class CyberwareNetwork {
         registrar.playToClient(ParticlePayload.TYPE, ParticlePayload.STREAM_CODEC, ParticlePayload::handle);
         registrar.playToClient(SwitchHeldItemPayload.TYPE, SwitchHeldItemPayload.STREAM_CODEC, SwitchHeldItemPayload::handle);
         registrar.playToClient(EngineeringSmashPayload.TYPE, EngineeringSmashPayload.STREAM_CODEC, EngineeringSmashPayload::handle);
+        registrar.playToClient(DeconstructionSyncPayload.TYPE, DeconstructionSyncPayload.STREAM_CODEC, DeconstructionSyncPayload::handle);
         registrar.playToClient(SyncConfigPayload.TYPE, SyncConfigPayload.STREAM_CODEC, SyncConfigPayload::handle);
         registrar.playToClient(CyberlegFallPayload.TYPE, CyberlegFallPayload.STREAM_CODEC, CyberlegFallPayload::handle);
 

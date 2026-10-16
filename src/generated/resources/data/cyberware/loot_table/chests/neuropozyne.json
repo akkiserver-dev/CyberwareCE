@@ -1,0 +1,32 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 64.0,
+                "min": 16.0
+              },
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "cyberware:neuropozyne",
+          "weight": 15
+        },
+        {
+          "type": "minecraft:empty",
+          "weight": 85
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "cyberware:chests/neuropozyne"
+}

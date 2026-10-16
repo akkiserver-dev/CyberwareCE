@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "D": {
+      "tag": "c:gems/diamond"
+    },
+    "E": {
+      "item": "cyberware:cybereyes"
+    },
+    "I": {
+      "tag": "c:ingots/iron"
+    }
+  },
+  "pattern": [
+    "IEI",
+    "IDI",
+    "III"
+  ],
+  "result": {
+    "count": 1,
+    "id": "cyberware:scanner"
+  }
+}

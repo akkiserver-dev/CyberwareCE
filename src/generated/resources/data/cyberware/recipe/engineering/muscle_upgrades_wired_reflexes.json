@@ -1,0 +1,21 @@
+{
+  "type": "cyberware:engineering",
+  "ingredients": [
+    {
+      "count": 1,
+      "item": "cyberware:component_ssc"
+    },
+    {
+      "count": 1,
+      "item": "cyberware:component_fiberoptics"
+    },
+    {
+      "count": 3,
+      "item": "cyberware:component_synthnerves"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "cyberware:muscle_upgrades_wired_reflexes"
+  }
+}

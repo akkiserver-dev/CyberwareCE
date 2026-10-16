@@ -1,0 +1,25 @@
+{
+  "type": "cyberware:engineering",
+  "ingredients": [
+    {
+      "count": 1,
+      "item": "cyberware:component_reactor"
+    },
+    {
+      "count": 1,
+      "item": "cyberware:component_plating"
+    },
+    {
+      "count": 2,
+      "item": "cyberware:component_fiberoptics"
+    },
+    {
+      "count": 1,
+      "item": "cyberware:component_microelectric"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "cyberware:skin_upgrades_solar_skin"
+  }
+}

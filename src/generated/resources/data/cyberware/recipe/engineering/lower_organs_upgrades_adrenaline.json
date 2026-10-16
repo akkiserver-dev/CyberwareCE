@@ -1,0 +1,17 @@
+{
+  "type": "cyberware:engineering",
+  "ingredients": [
+    {
+      "count": 1,
+      "item": "cyberware:component_actuator"
+    },
+    {
+      "count": 2,
+      "item": "cyberware:component_reactor"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "cyberware:lower_organs_upgrades_adrenaline"
+  }
+}

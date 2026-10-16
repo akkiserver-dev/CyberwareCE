@@ -1,0 +1,17 @@
+{
+  "type": "cyberware:engineering",
+  "ingredients": [
+    {
+      "count": 3,
+      "item": "cyberware:component_reactor"
+    },
+    {
+      "count": 2,
+      "item": "cyberware:component_storage"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "cyberware:lower_organs_upgrades_liver_filter"
+  }
+}

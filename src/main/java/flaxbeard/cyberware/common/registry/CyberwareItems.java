@@ -33,12 +33,9 @@ import flaxbeard.cyberware.common.item.SkinUpgradeItem;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.component.DyedItemColor;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -94,130 +91,96 @@ public final class CyberwareItems {
     // ---- eyes ----
 
     public static final DeferredItem<CybereyesItem> CYBEREYES = cyberware("cybereyes", CybereyesItem::new,
-            settings(BodyRegion.EYES, "cyberware.tooltip.cybereyes").essence(8).weight(UNCOMMON)
-                    .component(PLATING, 1).component(FIBER_OPTICS, 2).component(SYNTH_NERVES, 2));
+            settings(BodyRegion.EYES, "cyberware.tooltip.cybereyes").essence(8).weight(UNCOMMON));
     public static final DeferredItem<CybereyeUpgradeItem> NIGHT_VISION = cybereyeUpgrade("night_vision", CybereyeUpgradeItem.Kind.NIGHT_VISION,
-            settings(BodyRegion.EYES, "cyberware.tooltip.cybereye_upgrades.0").essence(2).weight(UNCOMMON)
-                    .component(PLATING, 1).component(FIBER_OPTICS, 2).component(SYNTH_NERVES, 1));
+            settings(BodyRegion.EYES, "cyberware.tooltip.cybereye_upgrades.0").essence(2).weight(UNCOMMON));
     public static final DeferredItem<CybereyeUpgradeItem> UNDERWATER_VISION = cybereyeUpgrade("underwater_vision", CybereyeUpgradeItem.Kind.UNDERWATER_VISION,
-            settings(BodyRegion.EYES, "cyberware.tooltip.cybereye_upgrades.1").essence(2).weight(UNCOMMON)
-                    .component(FIBER_OPTICS, 2).component(SYNTH_NERVES, 1));
+            settings(BodyRegion.EYES, "cyberware.tooltip.cybereye_upgrades.1").essence(2).weight(UNCOMMON));
     public static final DeferredItem<CybereyeUpgradeItem> HUDJACK = cybereyeUpgrade("hudjack", CybereyeUpgradeItem.Kind.HUDJACK,
-            settings(BodyRegion.EYES, "cyberware.tooltip.cybereye_upgrades.2").essence(1).weight(UNCOMMON)
-                    .component(SSC, 1).component(FIBER_OPTICS, 1).component(FULLERENE, 1).component(SYNTH_NERVES, 2));
+            settings(BodyRegion.EYES, "cyberware.tooltip.cybereye_upgrades.2").essence(1).weight(UNCOMMON));
     public static final DeferredItem<CybereyeUpgradeItem> TARGETING = cybereyeUpgrade("targeting", CybereyeUpgradeItem.Kind.TARGETING,
-            settings(BodyRegion.EYES, "cyberware.tooltip.cybereye_upgrades.3").essence(1).weight(UNCOMMON)
-                    .component(SSC, 2).component(FIBER_OPTICS, 1).component(FULLERENE, 1).component(SYNTH_NERVES, 1));
+            settings(BodyRegion.EYES, "cyberware.tooltip.cybereye_upgrades.3").essence(1).weight(UNCOMMON));
     public static final DeferredItem<CybereyeUpgradeItem> ZOOM = cybereyeUpgrade("zoom", CybereyeUpgradeItem.Kind.ZOOM,
-            settings(BodyRegion.EYES, "cyberware.tooltip.cybereye_upgrades.4").essence(1).weight(UNCOMMON)
-                    .component(FIBER_OPTICS, 2).component(SYNTH_NERVES, 4));
+            settings(BodyRegion.EYES, "cyberware.tooltip.cybereye_upgrades.4").essence(1).weight(UNCOMMON));
     public static final DeferredItem<HudlensItem> HUDLENS = cyberware("eye_upgrades_hudlens", HudlensItem::new,
-            settings(BodyRegion.EYES, "cyberware.tooltip.eye_upgrades.0").essence(1).weight(VERY_COMMON)
-                    .component(SSC, 1).component(FIBER_OPTICS, 1).component(FULLERENE, 1).component(SYNTH_NERVES, 2));
+            settings(BodyRegion.EYES, "cyberware.tooltip.eye_upgrades.0").essence(1).weight(VERY_COMMON));
 
     // ---- cranium ----
 
     public static final DeferredItem<BrainUpgradeItem> CORTICAL_STACK = brainUpgrade("cortical_stack", BrainUpgradeItem.Kind.CORTICAL_STACK,
-            settings(BodyRegion.CRANIUM, "cyberware.tooltip.brain_upgrades.0").essence(3).weight(RARE)
-                    .component(REACTOR, 2).component(SYNTH_NERVES, 1).component(STORAGE, 2));
+            settings(BodyRegion.CRANIUM, "cyberware.tooltip.brain_upgrades.0").essence(3).weight(RARE));
     public static final DeferredItem<BrainUpgradeItem> ENDER_JAMMER = brainUpgrade("ender_jammer", BrainUpgradeItem.Kind.ENDER_JAMMER,
-            settings(BodyRegion.CRANIUM, "cyberware.tooltip.brain_upgrades.1").essence(10).weight(UNCOMMON)
-                    .component(TITANIUM, 1).component(SSC, 1).component(FIBER_OPTICS, 1).component(MICROELECTRIC, 2));
+            settings(BodyRegion.CRANIUM, "cyberware.tooltip.brain_upgrades.1").essence(10).weight(UNCOMMON));
     public static final DeferredItem<BrainUpgradeItem> CONSCIOUSNESS_TRANSMITTER = brainUpgrade("consciousness_transmitter", BrainUpgradeItem.Kind.CONSCIOUSNESS_TRANSMITTER,
-            settings(BodyRegion.CRANIUM, "cyberware.tooltip.brain_upgrades.2").essence(2).weight(UNCOMMON)
-                    .component(SSC, 1).component(FULLERENE, 1).component(SYNTH_NERVES, 3));
+            settings(BodyRegion.CRANIUM, "cyberware.tooltip.brain_upgrades.2").essence(2).weight(UNCOMMON));
     public static final DeferredItem<BrainUpgradeItem> NEURAL_CONTEXTUALIZER = brainUpgrade("neural_contextualizer", BrainUpgradeItem.Kind.NEURAL_CONTEXTUALIZER,
-            settings(BodyRegion.CRANIUM, "cyberware.tooltip.brain_upgrades.3").essence(2).weight(COMMON)
-                    .component(SSC, 1).component(FULLERENE, 1).component(SYNTH_NERVES, 3));
+            settings(BodyRegion.CRANIUM, "cyberware.tooltip.brain_upgrades.3").essence(2).weight(COMMON));
     public static final DeferredItem<BrainUpgradeItem> THREAT_MATRIX = brainUpgrade("matrix", BrainUpgradeItem.Kind.THREAT_MATRIX,
-            settings(BodyRegion.CRANIUM, "cyberware.tooltip.brain_upgrades.4").essence(8).weight(UNCOMMON)
-                    .component(SSC, 3).component(FIBER_OPTICS, 1).component(MICROELECTRIC, 2));
+            settings(BodyRegion.CRANIUM, "cyberware.tooltip.brain_upgrades.4").essence(8).weight(UNCOMMON));
     public static final DeferredItem<BrainUpgradeItem> CRANIAL_BROADCASTER = brainUpgrade("radio", BrainUpgradeItem.Kind.RADIO,
-            settings(BodyRegion.CRANIUM, "cyberware.tooltip.brain_upgrades.5").essence(2).weight(UNCOMMON)
-                    .component(TITANIUM, 1).component(SSC, 1).component(FIBER_OPTICS, 1).component(MICROELECTRIC, 1));
+            settings(BodyRegion.CRANIUM, "cyberware.tooltip.brain_upgrades.5").essence(2).weight(UNCOMMON));
 
     // ---- heart ----
 
     public static final DeferredItem<CyberheartItem> CYBERHEART = cyberware("cyberheart", CyberheartItem::new,
-            settings(BodyRegion.HEART, "cyberware.tooltip.cyberheart").essence(5).weight(COMMON)
-                    .component(ACTUATOR, 2).component(TITANIUM, 1).component(SYNTH_NERVES, 1));
+            settings(BodyRegion.HEART, "cyberware.tooltip.cyberheart").essence(5).weight(COMMON));
     public static final DeferredItem<HeartUpgradeItem> INTERNAL_DEFIBRILLATOR = heartUpgrade("defibrillator", HeartUpgradeItem.Kind.INTERNAL_DEFIBRILLATOR,
-            settings(BodyRegion.HEART, "cyberware.tooltip.heart_upgrades.0").essence(10).weight(COMMON)
-                    .component(ACTUATOR, 1).component(FULLERENE, 2).component(MICROELECTRIC, 2));
+            settings(BodyRegion.HEART, "cyberware.tooltip.heart_upgrades.0").essence(10).weight(COMMON));
     public static final DeferredItem<HeartUpgradeItem> PLATELET_DISPATCHER = heartUpgrade("platelets", HeartUpgradeItem.Kind.PLATELET_DISPATCHER,
-            settings(BodyRegion.HEART, "cyberware.tooltip.heart_upgrades.1").essence(5).weight(UNCOMMON)
-                    .component(ACTUATOR, 1).component(REACTOR, 2).component(STORAGE, 1));
+            settings(BodyRegion.HEART, "cyberware.tooltip.heart_upgrades.1").essence(5).weight(UNCOMMON));
     public static final DeferredItem<HeartUpgradeItem> STEM_CELL_SYNTHESIZER = heartUpgrade("medkit", HeartUpgradeItem.Kind.STEM_CELL_SYNTHESIZER,
-            settings(BodyRegion.HEART, "cyberware.tooltip.heart_upgrades.2").essence(15).weight(UNCOMMON)
-                    .component(REACTOR, 3).component(FULLERENE, 1).component(SYNTH_NERVES, 1));
+            settings(BodyRegion.HEART, "cyberware.tooltip.heart_upgrades.2").essence(15).weight(UNCOMMON));
     public static final DeferredItem<HeartUpgradeItem> CARDIOVASCULAR_COUPLER = heartUpgrade("coupler", HeartUpgradeItem.Kind.CARDIOVASCULAR_COUPLER,
-            settings(BodyRegion.HEART, "cyberware.tooltip.heart_upgrades.3").essence(10).weight(VERY_COMMON)
-                    .component(REACTOR, 1).component(SYNTH_NERVES, 1).component(MICROELECTRIC, 2));
+            settings(BodyRegion.HEART, "cyberware.tooltip.heart_upgrades.3").essence(10).weight(VERY_COMMON));
 
     // ---- lungs ----
 
     public static final DeferredItem<LungsUpgradeItem> COMPRESSED_OXYGEN = lungsUpgrade("oxygen", LungsUpgradeItem.Kind.COMPRESSED_OXYGEN,
-            settings(BodyRegion.LUNGS, "cyberware.tooltip.lungs_upgrades.0").essence(15).weight(UNCOMMON)
-                    .component(REACTOR, 2).component(STORAGE, 2));
+            settings(BodyRegion.LUNGS, "cyberware.tooltip.lungs_upgrades.0").essence(15).weight(UNCOMMON));
     public static final DeferredItem<LungsUpgradeItem> HYPEROXYGENATION_BOOST = lungsUpgrade("hyperoxygenation", LungsUpgradeItem.Kind.HYPEROXYGENATION_BOOST,
-            settings(BodyRegion.LUNGS, "cyberware.tooltip.lungs_upgrades.1").essence(2, 4, 5).weight(COMMON)
-                    .component(REACTOR, 1).component(STORAGE, 2).component(MICROELECTRIC, 1));
+            settings(BodyRegion.LUNGS, "cyberware.tooltip.lungs_upgrades.1").essence(2, 4, 5).weight(COMMON));
 
     // ---- lower organs ----
 
     public static final DeferredItem<LowerOrgansUpgradeItem> LIVER_FILTER = lowerOrgansUpgrade("liver_filter", LowerOrgansUpgradeItem.Kind.LIVER_FILTER,
-            settings(BodyRegion.LOWER_ORGANS, "cyberware.tooltip.lower_organs_upgrades.0").essence(5).weight(UNCOMMON)
-                    .component(REACTOR, 3).component(STORAGE, 2));
+            settings(BodyRegion.LOWER_ORGANS, "cyberware.tooltip.lower_organs_upgrades.0").essence(5).weight(UNCOMMON));
     public static final DeferredItem<LowerOrgansUpgradeItem> METABOLIC_GENERATOR = lowerOrgansUpgrade("metabolic", LowerOrgansUpgradeItem.Kind.METABOLIC_GENERATOR,
-            settings(BodyRegion.LOWER_ORGANS, "cyberware.tooltip.lower_organs_upgrades.1").essence(5).weight(COMMON)
-                    .component(REACTOR, 3).component(SSC, 1).component(MICROELECTRIC, 1));
+            settings(BodyRegion.LOWER_ORGANS, "cyberware.tooltip.lower_organs_upgrades.1").essence(5).weight(COMMON));
     public static final DeferredItem<LowerOrgansUpgradeItem> BATTERY = lowerOrgansUpgrade("battery", LowerOrgansUpgradeItem.Kind.BATTERY,
-            settings(BodyRegion.LOWER_ORGANS, "cyberware.tooltip.lower_organs_upgrades.2").essence(5, 7, 9, 11).weight(VERY_COMMON)
-                    .component(REACTOR, 1).component(STORAGE, 2).component(MICROELECTRIC, 3));
+            settings(BodyRegion.LOWER_ORGANS, "cyberware.tooltip.lower_organs_upgrades.2").essence(5, 7, 9, 11).weight(VERY_COMMON));
     public static final DeferredItem<LowerOrgansUpgradeItem> ADRENALINE_PUMP = lowerOrgansUpgrade("adrenaline", LowerOrgansUpgradeItem.Kind.ADRENALINE_PUMP,
-            settings(BodyRegion.LOWER_ORGANS, "cyberware.tooltip.lower_organs_upgrades.3").essence(5).weight(UNCOMMON)
-                    .component(ACTUATOR, 1).component(REACTOR, 2));
+            settings(BodyRegion.LOWER_ORGANS, "cyberware.tooltip.lower_organs_upgrades.3").essence(5).weight(UNCOMMON));
     public static final DeferredItem<DenseBatteryItem> DENSE_BATTERY = cyberware("dense_battery", DenseBatteryItem::new,
-            settings(BodyRegion.LOWER_ORGANS, "cyberware.tooltip.dense_battery").essence(15).weight(RARE)
-                    .component(FULLERENE, 3).component(MICROELECTRIC, 4));
+            settings(BodyRegion.LOWER_ORGANS, "cyberware.tooltip.dense_battery").essence(15).weight(RARE));
     public static final DeferredItem<CreativeBatteryItem> CREATIVE_BATTERY = cyberware("creative_battery", CreativeBatteryItem::new,
             settings(BodyRegion.LOWER_ORGANS, "cyberware.tooltip.creative_battery").essence(0));
 
     // ---- skin ----
 
     public static final DeferredItem<SkinUpgradeItem> SOLARSKIN = skinUpgrade("solar_skin", SkinUpgradeItem.Kind.SOLARSKIN,
-            settings(BodyRegion.SKIN, "cyberware.tooltip.skin_upgrades.0").essence(12).weight(VERY_COMMON)
-                    .component(REACTOR, 1).component(PLATING, 1).component(FIBER_OPTICS, 2).component(MICROELECTRIC, 1));
+            settings(BodyRegion.SKIN, "cyberware.tooltip.skin_upgrades.0").essence(12).weight(VERY_COMMON));
     public static final DeferredItem<SkinUpgradeItem> SUBDERMAL_SPIKES = skinUpgrade("subdermal_spikes", SkinUpgradeItem.Kind.SUBDERMAL_SPIKES,
-            settings(BodyRegion.SKIN, "cyberware.tooltip.skin_upgrades.1").essence(12).weight(UNCOMMON)
-                    .component(ACTUATOR, 1).component(TITANIUM, 2).component(PLATING, 1).component(MICROELECTRIC, 1));
+            settings(BodyRegion.SKIN, "cyberware.tooltip.skin_upgrades.1").essence(12).weight(UNCOMMON));
     public static final DeferredItem<SkinUpgradeItem> SYNTHETIC_SKIN = skinUpgrade("fake_skin", SkinUpgradeItem.Kind.SYNTHETIC_SKIN,
-            settings(BodyRegion.SKIN, "cyberware.tooltip.skin_upgrades.2").essence(0).weight(UNCOMMON)
-                    .component(REACTOR, 1).component(PLATING, 3).component(FIBER_OPTICS, 2));
+            settings(BodyRegion.SKIN, "cyberware.tooltip.skin_upgrades.2").essence(0).weight(UNCOMMON));
     public static final DeferredItem<SkinUpgradeItem> IMMUNOSUPPRESSANT = skinUpgrade("immuno", SkinUpgradeItem.Kind.IMMUNOSUPPRESSANT,
-            settings(BodyRegion.SKIN, "cyberware.tooltip.skin_upgrades.3").essence(-25).weight(RARE)
-                    .component(REACTOR, 3).component(TITANIUM, 1).component(SYNTH_NERVES, 1).component(STORAGE, 1).component(MICROELECTRIC, 1));
+            settings(BodyRegion.SKIN, "cyberware.tooltip.skin_upgrades.3").essence(-25).weight(RARE));
 
     // ---- muscle ----
 
     public static final DeferredItem<MuscleUpgradeItem> WIRED_REFLEXES = muscleUpgrade("wired_reflexes", MuscleUpgradeItem.Kind.WIRED_REFLEXES,
-            settings(BodyRegion.MUSCLE, "cyberware.tooltip.muscle_upgrades.0").essence(9, 10, 11).weight(UNCOMMON)
-                    .component(SSC, 1).component(FIBER_OPTICS, 1).component(SYNTH_NERVES, 3));
+            settings(BodyRegion.MUSCLE, "cyberware.tooltip.muscle_upgrades.0").essence(9, 10, 11).weight(UNCOMMON));
     public static final DeferredItem<MuscleUpgradeItem> MUSCLE_REPLACEMENTS = muscleUpgrade("muscle_replacements", MuscleUpgradeItem.Kind.MUSCLE_REPLACEMENTS,
-            settings(BodyRegion.MUSCLE, "cyberware.tooltip.muscle_upgrades.1").essence(15).weight(RARE)
-                    .component(ACTUATOR, 3).component(TITANIUM, 1).component(FIBER_OPTICS, 2));
+            settings(BodyRegion.MUSCLE, "cyberware.tooltip.muscle_upgrades.1").essence(15).weight(RARE));
 
     // ---- bone ----
 
     public static final DeferredItem<BoneUpgradeItem> BONE_LACING = boneUpgrade("bonelacing", BoneUpgradeItem.Kind.LACING,
-            settings(BodyRegion.BONE, "cyberware.tooltip.bone_upgrades.0").essence(3, 6, 9, 12, 15).weight(UNCOMMON)
-                    .component(REACTOR, 1).component(TITANIUM, 2).component(FULLERENE, 2));
+            settings(BodyRegion.BONE, "cyberware.tooltip.bone_upgrades.0").essence(3, 6, 9, 12, 15).weight(UNCOMMON));
     public static final DeferredItem<BoneUpgradeItem> BONE_FLEX = boneUpgrade("boneflex", BoneUpgradeItem.Kind.FLEX,
-            settings(BodyRegion.BONE, "cyberware.tooltip.bone_upgrades.1").essence(5).weight(RARE)
-                    .component(REACTOR, 3).component(TITANIUM, 2).component(STORAGE, 2));
+            settings(BodyRegion.BONE, "cyberware.tooltip.bone_upgrades.1").essence(5).weight(RARE));
     public static final DeferredItem<BoneUpgradeItem> BONE_BATTERY = boneUpgrade("bonebattery", BoneUpgradeItem.Kind.BATTERY,
-            settings(BodyRegion.BONE, "cyberware.tooltip.bone_upgrades.2").essence(2, 3, 4, 5).weight(UNCOMMON)
-                    .component(REACTOR, 2).component(STORAGE, 2).component(MICROELECTRIC, 1));
+            settings(BodyRegion.BONE, "cyberware.tooltip.bone_upgrades.2").essence(2, 3, 4, 5).weight(UNCOMMON));
 
     // ---- limbs ----
 
@@ -227,35 +190,26 @@ public final class CyberwareItems {
     public static final DeferredItem<CyberlimbItem> CYBERLEG_RIGHT = cyberlimb("cyberleg_right", 3, BodyRegion.LEG, SidedLimb.Side.RIGHT);
 
     public static final DeferredItem<ArmUpgradeItem> BOW_STRING_RETRACTOR = cyberware("arm_upgrades_bow", ArmUpgradeItem::new,
-            settings(BodyRegion.ARM, "cyberware.tooltip.arm_upgrades.0").essence(3).weight(RARE)
-                    .component(ACTUATOR, 4).component(PLATING, 2));
+            settings(BodyRegion.ARM, "cyberware.tooltip.arm_upgrades.0").essence(3).weight(RARE));
 
     public static final DeferredItem<HandUpgradeItem> CRAFT_HANDS = handUpgrade("craft_hands", HandUpgradeItem.Kind.CRAFT_HANDS,
-            settings(BodyRegion.HAND, "cyberware.tooltip.hand_upgrades.0").essence(2).weight(RARE)
-                    .component(ACTUATOR, 4).component(SSC, 1).component(PLATING, 1));
+            settings(BodyRegion.HAND, "cyberware.tooltip.hand_upgrades.0").essence(2).weight(RARE));
     public static final DeferredItem<HandUpgradeItem> CLAWS = handUpgrade("claws", HandUpgradeItem.Kind.CLAWS,
-            settings(BodyRegion.HAND, "cyberware.tooltip.hand_upgrades.1").essence(2).weight(RARE)
-                    .component(ACTUATOR, 2).component(TITANIUM, 2).component(PLATING, 1).component(FULLERENE, 1).component(STORAGE, 2));
+            settings(BodyRegion.HAND, "cyberware.tooltip.hand_upgrades.1").essence(2).weight(RARE));
     public static final DeferredItem<HandUpgradeItem> MINING_FIST = handUpgrade("mining", HandUpgradeItem.Kind.MINING,
-            settings(BodyRegion.HAND, "cyberware.tooltip.hand_upgrades.2").essence(1).weight(RARE)
-                    .component(ACTUATOR, 2).component(TITANIUM, 1).component(PLATING, 1).component(FULLERENE, 2));
+            settings(BodyRegion.HAND, "cyberware.tooltip.hand_upgrades.2").essence(1).weight(RARE));
 
     public static final DeferredItem<LegUpgradeItem> JUMP_BOOST = legUpgrade("jump_boost", LegUpgradeItem.Kind.JUMP_BOOST,
-            settings(BodyRegion.LEG, "cyberware.tooltip.leg_upgrades.0").essence(3).weight(RARE)
-                    .component(ACTUATOR, 2).component(TITANIUM, 2));
+            settings(BodyRegion.LEG, "cyberware.tooltip.leg_upgrades.0").essence(3).weight(RARE));
     public static final DeferredItem<LegUpgradeItem> FALL_DAMAGE_UPGRADE = legUpgrade("fall_damage", LegUpgradeItem.Kind.FALL_DAMAGE,
-            settings(BodyRegion.LEG, "cyberware.tooltip.leg_upgrades.1").essence(2).weight(RARE)
-                    .component(TITANIUM, 3).component(PLATING, 1).component(FIBER_OPTICS, 1));
+            settings(BodyRegion.LEG, "cyberware.tooltip.leg_upgrades.1").essence(2).weight(RARE));
 
     public static final DeferredItem<FootUpgradeItem> SPURS = footUpgrade("spurs", FootUpgradeItem.Kind.SPURS,
-            settings(BodyRegion.FOOT, "cyberware.tooltip.foot_upgrades.0").essence(1).weight(UNCOMMON)
-                    .component(ACTUATOR, 1).component(TITANIUM, 1).component(PLATING, 1));
+            settings(BodyRegion.FOOT, "cyberware.tooltip.foot_upgrades.0").essence(1).weight(UNCOMMON));
     public static final DeferredItem<FootUpgradeItem> AQUA = footUpgrade("aqua", FootUpgradeItem.Kind.AQUA,
-            settings(BodyRegion.FOOT, "cyberware.tooltip.foot_upgrades.1").essence(2).weight(RARE)
-                    .component(ACTUATOR, 2).component(TITANIUM, 1).component(MICROELECTRIC, 1));
+            settings(BodyRegion.FOOT, "cyberware.tooltip.foot_upgrades.1").essence(2).weight(RARE));
     public static final DeferredItem<FootUpgradeItem> WHEELS = footUpgrade("wheels", FootUpgradeItem.Kind.WHEELS,
-            settings(BodyRegion.FOOT, "cyberware.tooltip.foot_upgrades.2").essence(3).weight(UNCOMMON)
-                    .component(ACTUATOR, 2).component(MICROELECTRIC, 2));
+            settings(BodyRegion.FOOT, "cyberware.tooltip.foot_upgrades.2").essence(3).weight(UNCOMMON));
 
     // ---- other items ----
 
@@ -267,19 +221,15 @@ public final class CyberwareItems {
             new Item.Properties().attributes(SwordItem.createAttributes(CyberwareTiers.KATANA, 3, -2.4F))));
 
     public static final DeferredItem<CyberwareArmorItem> SHADES = ITEMS.register("shades", () -> new CyberwareArmorItem(
-            CyberwareArmorMaterials.SHADES, ArmorItem.Type.HELMET, new Item.Properties().durability(ArmorItem.Type.HELMET.getDurability(5)),
-            CyberwareItems::shadesComponents));
+            CyberwareArmorMaterials.SHADES, ArmorItem.Type.HELMET, new Item.Properties().durability(ArmorItem.Type.HELMET.getDurability(5))));
     public static final DeferredItem<CyberwareArmorItem> SHADES2 = ITEMS.register("shades2", () -> new CyberwareArmorItem(
-            CyberwareArmorMaterials.SHADES2, ArmorItem.Type.HELMET, new Item.Properties().durability(ArmorItem.Type.HELMET.getDurability(5)),
-            CyberwareItems::shadesComponents));
+            CyberwareArmorMaterials.SHADES2, ArmorItem.Type.HELMET, new Item.Properties().durability(ArmorItem.Type.HELMET.getDurability(5))));
     public static final DeferredItem<CyberwareArmorItem> JACKET = ITEMS.register("jacket", () -> new CyberwareArmorItem(
-            CyberwareArmorMaterials.JACKET, ArmorItem.Type.CHESTPLATE, new Item.Properties().durability(ArmorItem.Type.CHESTPLATE.getDurability(5)),
-            () -> List.of(new ItemStack(TITANIUM.get(), 1), new ItemStack(Items.LEATHER, 8), new ItemStack(Items.BLACK_DYE, 1))));
+            CyberwareArmorMaterials.JACKET, ArmorItem.Type.CHESTPLATE, new Item.Properties().durability(ArmorItem.Type.CHESTPLATE.getDurability(5))));
     public static final DeferredItem<CyberwareArmorItem> TRENCH_COAT = ITEMS.register("trenchcoat", () -> new CyberwareArmorItem(
             CyberwareArmorMaterials.TRENCH_COAT, ArmorItem.Type.CHESTPLATE, new Item.Properties()
             .durability(ArmorItem.Type.CHESTPLATE.getDurability(5))
-            .component(DataComponents.DYED_COLOR, new DyedItemColor(CyberwareArmorItem.DEFAULT_TRENCH_COAT_COLOR, true)),
-            () -> List.of(new ItemStack(TITANIUM.get(), 2), new ItemStack(Items.LEATHER, 12), new ItemStack(Items.BLACK_DYE, 1))));
+            .component(DataComponents.DYED_COLOR, new DyedItemColor(CyberwareArmorItem.DEFAULT_TRENCH_COAT_COLOR, true))));
 
     // ---- block items ----
 
@@ -314,9 +264,6 @@ public final class CyberwareItems {
         return Collections.unmodifiableList(CYBERWARE);
     }
 
-    private static List<ItemStack> shadesComponents() {
-        return List.of(new ItemStack(Blocks.BLACK_STAINED_GLASS, 4), new ItemStack(PLATING.get(), 1));
-    }
 
     private static <T extends CyberwareItem> DeferredItem<T> cyberware(String name, BiFunction<Item.Properties, CyberwareItem.Settings, T> factory, CyberwareItem.Settings settings) {
         DeferredItem<T> item = ITEMS.register(name, () -> factory.apply(new Item.Properties(), settings));
@@ -331,8 +278,7 @@ public final class CyberwareItems {
 
     private static DeferredItem<CyberlimbItem> cyberlimb(String name, int index, BodyRegion region, SidedLimb.Side side) {
         return cyberware("cyberlimbs_" + name, (properties, settings) -> new CyberlimbItem(properties, settings, side),
-                settings(region, "cyberware.tooltip.cyberlimbs." + index).essence(15)
-                        .component(ACTUATOR, 4).component(TITANIUM, 2).component(PLATING, 2).component(FIBER_OPTICS, 1).component(SYNTH_NERVES, 1));
+                settings(region, "cyberware.tooltip.cyberlimbs." + index).essence(15));
     }
 
     private static DeferredItem<CybereyeUpgradeItem> cybereyeUpgrade(String name, CybereyeUpgradeItem.Kind kind, CyberwareItem.Settings settings) {

@@ -354,5 +354,14 @@
   "item.cyberware.cyberzombie_spawn_egg": "Cyberzombie Spawn Egg",
   "attribute.cyberware.tolerance": "Tolerance",
   "cyberware.gui.menu": "Cyberware Menu",
-  "cyberware.gui.hud_configuration": "HUD Configuration"
+  "cyberware.gui.hud_configuration": "HUD Configuration",
+  "jei.cyberware.engineering": "Cyberware Engineering",
+  "jei.cyberware.deconstruction": "Deconstruction",
+  "jei.cyberware.scanning": "Scanning",
+  "jei.cyberware.not_consumed": "Not consumed",
+  "jei.cyberware.paper": "Optional: one is used up when a blueprint is made",
+  "jei.cyberware.components_lost": "%1$s of the components are lost at random",
+  "jei.cyberware.components_lost.damaged": "Damaged items lose more",
+  "jei.cyberware.scan_time": "Takes %1$s min %2$s s per scan",
+  "jei.cyberware.chance_per_item": "+%1$s per additional item, up to %2$s"
 }

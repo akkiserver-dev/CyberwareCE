@@ -8,7 +8,6 @@ import flaxbeard.cyberware.common.block.entity.EngineeringTableBlockEntity;
 import flaxbeard.cyberware.common.command.ClearCyberwareCommand;
 import flaxbeard.cyberware.common.handler.CyberwareDataHandler;
 import flaxbeard.cyberware.common.handler.EssentialsMissingHandler;
-import flaxbeard.cyberware.common.handler.LootHandler;
 import flaxbeard.cyberware.common.item.ArmUpgradeItem;
 import flaxbeard.cyberware.common.item.BoneUpgradeItem;
 import flaxbeard.cyberware.common.item.BrainUpgradeItem;
@@ -27,6 +26,7 @@ import flaxbeard.cyberware.common.item.MuscleUpgradeItem;
 import flaxbeard.cyberware.common.item.SkinUpgradeItem;
 import flaxbeard.cyberware.common.item.SpiderEyeCyberware;
 import flaxbeard.cyberware.common.network.CyberwareNetwork;
+import flaxbeard.cyberware.common.recipe.Deconstruction;
 import flaxbeard.cyberware.common.network.SyncConfigPayload;
 import flaxbeard.cyberware.common.registry.CyberwareArmorMaterials;
 import flaxbeard.cyberware.common.registry.CyberwareAttachments;
@@ -89,9 +89,12 @@ public class CyberwareMod {
         CyberwareAttachments.ATTACHMENT_TYPES.register(modBus);
         CyberwareArmorMaterials.ARMOR_MATERIALS.register(modBus);
         CyberwareCreativeTabs.CREATIVE_TABS.register(modBus);
+        CyberwareRecipes.RECIPE_TYPES.register(modBus);
         CyberwareRecipes.RECIPE_SERIALIZERS.register(modBus);
         CyberwareRecipes.CONDITION_CODECS.register(modBus);
         CyberwareRecipes.BIOME_MODIFIER_SERIALIZERS.register(modBus);
+        // before any data pack is loaded
+        Deconstruction.registerParams();
 
         modBus.addListener(this::commonSetup);
         modBus.addListener(CyberwareNetwork::register);
@@ -103,7 +106,7 @@ public class CyberwareMod {
         modBus.addListener(CyberwareMod::onConfigReload);
 
         for (Class<?> handler : new Class<?>[]{
-                CyberwareDataHandler.class, EssentialsMissingHandler.class, LootHandler.class,
+                CyberwareDataHandler.class, EssentialsMissingHandler.class, Deconstruction.class,
                 CybereyesItem.class, CybereyeUpgradeItem.class, SpiderEyeCyberware.class, BrainUpgradeItem.class,
                 CyberheartItem.class, HeartUpgradeItem.class, LungsUpgradeItem.class, LowerOrgansUpgradeItem.class,
                 SkinUpgradeItem.class, MuscleUpgradeItem.class, BoneUpgradeItem.class, ArmUpgradeItem.class,

@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "tag": "c:storage_blocks/iron"
+    },
+    "D": {
+      "item": "minecraft:iron_door"
+    },
+    "I": {
+      "tag": "c:ingots/iron"
+    }
+  },
+  "pattern": [
+    "III",
+    "IBI",
+    "IDI"
+  ],
+  "result": {
+    "count": 1,
+    "id": "cyberware:surgery_chamber"
+  }
+}

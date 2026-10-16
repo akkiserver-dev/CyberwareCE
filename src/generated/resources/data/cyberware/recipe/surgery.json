@@ -1,0 +1,36 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "cyberware:config",
+      "option": "surgery_crafting"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:diamond_axe"
+    },
+    "I": {
+      "tag": "c:ingots/iron"
+    },
+    "P": {
+      "item": "minecraft:diamond_pickaxe"
+    },
+    "R": {
+      "tag": "c:storage_blocks/redstone"
+    },
+    "S": {
+      "item": "minecraft:diamond_sword"
+    }
+  },
+  "pattern": [
+    "III",
+    "IRI",
+    "PSA"
+  ],
+  "result": {
+    "count": 1,
+    "id": "cyberware:surgery"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": {
+      "item": "cyberware:component_ssc"
+    },
+    "F": {
+      "item": "cyberware:component_fiberoptics"
+    },
+    "I": {
+      "tag": "c:ingots/iron"
+    }
+  },
+  "pattern": [
+    "F  ",
+    "III",
+    "ICI"
+  ],
+  "result": {
+    "count": 1,
+    "id": "cyberware:beacon"
+  }
+}

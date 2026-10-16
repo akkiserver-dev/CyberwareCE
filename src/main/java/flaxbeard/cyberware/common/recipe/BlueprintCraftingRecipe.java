@@ -1,6 +1,6 @@
 package flaxbeard.cyberware.common.recipe;
 
-import flaxbeard.cyberware.api.item.Deconstructable;
+import flaxbeard.cyberware.api.CyberwareAPI;
 import flaxbeard.cyberware.common.item.BlueprintItem;
 import flaxbeard.cyberware.common.registry.CyberwareItems;
 import flaxbeard.cyberware.common.registry.CyberwareRecipes;
@@ -30,7 +30,7 @@ public class BlueprintCraftingRecipe extends CustomRecipe {
         for (int index = 0; index < input.size(); index++) {
             ItemStack stack = input.getItem(index);
             if (stack.isEmpty()) continue;
-            if (stack.getItem() instanceof Deconstructable && stack.getCount() == 1 && !stack.is(CyberwareItems.BLUEPRINT.get())) {
+            if (CyberwareAPI.canDeconstruct(stack) && stack.getCount() == 1 && !stack.is(CyberwareItems.BLUEPRINT.get())) {
                 if (itemIndex != -1) return -1;
                 itemIndex = index;
             } else if (stack.is(CyberwareItems.BLUEPRINT.get()) && BlueprintItem.isBlank(stack)) {

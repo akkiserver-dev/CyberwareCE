@@ -1,0 +1,21 @@
+{
+  "type": "cyberware:engineering",
+  "ingredients": [
+    {
+      "count": 3,
+      "item": "cyberware:component_actuator"
+    },
+    {
+      "count": 1,
+      "item": "cyberware:component_titanium"
+    },
+    {
+      "count": 2,
+      "item": "cyberware:component_fiberoptics"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "cyberware:muscle_upgrades_muscle_replacements"
+  }
+}

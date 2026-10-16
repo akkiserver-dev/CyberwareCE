@@ -1,0 +1,27 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "cyberware:config",
+      "option": "katana"
+    }
+  ],
+  "type": "cyberware:engineering",
+  "ingredients": [
+    {
+      "count": 2,
+      "item": "minecraft:iron_ingot"
+    },
+    {
+      "count": 1,
+      "item": "cyberware:component_titanium"
+    },
+    {
+      "count": 1,
+      "item": "cyberware:component_plating"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "cyberware:katana"
+  }
+}

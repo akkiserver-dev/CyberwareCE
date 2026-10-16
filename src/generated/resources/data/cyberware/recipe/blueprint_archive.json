@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "tag": "cyberware:paper"
+    },
+    "P": {
+      "tag": "c:ingots/iron"
+    }
+  },
+  "pattern": [
+    "PPP",
+    "AAA",
+    "PPP"
+  ],
+  "result": {
+    "count": 1,
+    "id": "cyberware:blueprint_archive"
+  }
+}

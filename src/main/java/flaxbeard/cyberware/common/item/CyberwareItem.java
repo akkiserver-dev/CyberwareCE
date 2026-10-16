@@ -4,34 +4,30 @@ import flaxbeard.cyberware.api.CyberwareAPI;
 import flaxbeard.cyberware.api.item.BodyRegion;
 import flaxbeard.cyberware.api.item.Cyberware;
 import flaxbeard.cyberware.api.item.CyberwareTabItem;
-import flaxbeard.cyberware.api.item.Deconstructable;
 import flaxbeard.cyberware.api.item.Quality;
 import net.minecraft.ChatFormatting;
 import net.minecraft.locale.Language;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.item.ItemStack;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.function.Supplier;
 
 /**
  * Base class of all installable cyberware items.
  * <p>
- * Static properties (body region, essence cost, zombie weight, components) are configured with {@link Settings};
+ * Static properties (body region, essence cost, zombie weight) are configured with {@link Settings};
+ * the components are data: see the {@code cyberware:engineering} recipes and the deconstruction loot tables.
  * behaviour is added by overriding the hooks or by event handlers in the subclasses.
  */
-public class CyberwareItem extends Item implements Cyberware, CyberwareTabItem, Deconstructable {
+public class CyberwareItem extends Item implements Cyberware, CyberwareTabItem {
     private final BodyRegion region;
     private final int[] essence;
     private final int weight;
     private final String tooltipKey;
-    private final Supplier<List<ItemStack>> components;
-    private List<ItemStack> cachedComponents;
 
     public CyberwareItem(Properties properties, Settings settings) {
         super(properties);
@@ -39,7 +35,6 @@ public class CyberwareItem extends Item implements Cyberware, CyberwareTabItem, 
         this.essence = settings.essence;
         this.weight = settings.weight;
         this.tooltipKey = settings.tooltipKey;
-        this.components = settings.components;
     }
 
     public static Settings settings(BodyRegion region, String tooltipKey) {
@@ -246,28 +241,6 @@ public class CyberwareItem extends Item implements Cyberware, CyberwareTabItem, 
         return Category.of(getBodyRegion(stack));
     }
 
-    // ---- deconstruction ----
-
-    @Override
-    public boolean canDestroy(ItemStack stack) {
-        return !getComponentList().isEmpty();
-    }
-
-    @Override
-    public List<ItemStack> getComponents(ItemStack stack) {
-        return getComponentList();
-    }
-
-    private List<ItemStack> getComponentList() {
-        if (cachedComponents == null) {
-            cachedComponents = components.get();
-        }
-        return cachedComponents;
-    }
-
-    private record ComponentCost(Supplier<? extends ItemLike> item, int count) {
-    }
-
     /**
      * Static configuration of a cyberware item.
      */
@@ -276,10 +249,6 @@ public class CyberwareItem extends Item implements Cyberware, CyberwareTabItem, 
         private final String tooltipKey;
         private int[] essence = {0};
         private int weight = 0;
-        private final List<ComponentCost> componentList = new ArrayList<>();
-        private final Supplier<List<ItemStack>> components = () -> componentList.stream()
-                .map(cost -> new ItemStack(cost.item().get(), cost.count()))
-                .toList();
 
         private Settings(BodyRegion region, String tooltipKey) {
             this.region = region;
@@ -296,14 +265,6 @@ public class CyberwareItem extends Item implements Cyberware, CyberwareTabItem, 
 
         public Settings weight(int weight) {
             this.weight = weight;
-            return this;
-        }
-
-        /**
-         * Adds an item produced when this cyberware is destroyed in the Engineering Table.
-         */
-        public Settings component(Supplier<? extends ItemLike> item, int count) {
-            this.componentList.add(new ComponentCost(item, count));
             return this;
         }
     }

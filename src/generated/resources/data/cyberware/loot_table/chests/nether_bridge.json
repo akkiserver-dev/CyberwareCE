@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "cyberware:surgery",
+          "weight": 15
+        },
+        {
+          "type": "minecraft:empty",
+          "weight": 60
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "cyberware:chests/nether_bridge"
+}

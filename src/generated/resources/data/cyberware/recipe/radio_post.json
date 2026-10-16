@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "minecraft:iron_bars"
+    },
+    "F": {
+      "item": "cyberware:component_fiberoptics"
+    },
+    "P": {
+      "item": "cyberware:component_plating"
+    }
+  },
+  "pattern": [
+    "B B",
+    "BFB",
+    "BPB"
+  ],
+  "result": {
+    "count": 6,
+    "id": "cyberware:radio_post"
+  }
+}

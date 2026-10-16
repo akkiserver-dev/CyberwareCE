@@ -31,7 +31,7 @@ public class BlueprintArchiveScreen extends ChestLikeScreen<BlueprintArchiveMenu
         for (int index = 0; index < count; index++) {
             ItemStack stack = stacks.apply(index);
             if (stack.getItem() instanceof Blueprint blueprint) {
-                graphics.renderItem(blueprint.getIconForDisplay(stack), x + 18 * (index % columns), y + 18 * (index / columns));
+                graphics.renderItem(blueprint.getTarget(stack), x + 18 * (index % columns), y + 18 * (index / columns));
             }
         }
         graphics.pose().popPose();
