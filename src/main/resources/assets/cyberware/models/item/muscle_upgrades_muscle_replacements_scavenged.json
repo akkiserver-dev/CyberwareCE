@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "cyberware:item/muscle_upgrades_muscle_replacements_scavenged"
+  }
+}

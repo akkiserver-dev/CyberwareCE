@@ -5,46 +5,42 @@ import net.neoforged.bus.api.Event;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Fired on the client to collect the HUD elements to render this frame.
+ */
 public class CyberwareHudEvent extends Event {
-    private final List<IHudElement> elements = new ArrayList<>();
+    private final List<HudElement> elements = new ArrayList<>();
+    private final int screenWidth;
+    private final int screenHeight;
     private boolean hudjackAvailable;
-    private final int width;
-    private final int height;
 
-    public CyberwareHudEvent(int width, int height, boolean hudjackAvailable)
-    {
-        super();
-        this.width = width;
-        this.height = height;
+    public CyberwareHudEvent(int screenWidth, int screenHeight, boolean hudjackAvailable) {
+        this.screenWidth = screenWidth;
+        this.screenHeight = screenHeight;
         this.hudjackAvailable = hudjackAvailable;
     }
 
-    public int getHeight()
-    {
-        return height;
+    public int getScreenWidth() {
+        return screenWidth;
     }
 
-    public int getWidth() {
-        return width;
+    public int getScreenHeight() {
+        return screenHeight;
     }
 
-    public boolean isHudjackAvailable()
-    {
+    public boolean isHudjackAvailable() {
         return hudjackAvailable;
     }
 
-    public void setHudjackAvailable(boolean hudjackAvailable)
-    {
+    public void setHudjackAvailable(boolean hudjackAvailable) {
         this.hudjackAvailable = hudjackAvailable;
     }
 
-    public List<IHudElement> getElements()
-    {
+    public List<HudElement> getElements() {
         return elements;
     }
 
-    public void addElement(IHudElement element)
-    {
+    public void addElement(HudElement element) {
         elements.add(element);
     }
 }

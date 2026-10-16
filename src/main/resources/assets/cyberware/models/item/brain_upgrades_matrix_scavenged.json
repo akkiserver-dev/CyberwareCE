@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "cyberware:item/brain_upgrades_matrix_scavenged"
+  }
+}

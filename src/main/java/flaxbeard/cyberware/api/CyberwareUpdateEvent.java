@@ -1,27 +1,21 @@
 package flaxbeard.cyberware.api;
 
 import net.minecraft.world.entity.LivingEntity;
-import net.neoforged.neoforge.event.entity.EntityEvent;
+import net.neoforged.neoforge.event.entity.living.LivingEvent;
 
-import javax.annotation.Nonnull;
+/**
+ * Fired every tick, on both sides, for every living entity that has cyberware data.
+ * Most cyberware logic hooks into this event.
+ */
+public class CyberwareUpdateEvent extends LivingEvent {
+    private final CyberwareUserData userData;
 
-public class CyberwareUpdateEvent extends EntityEvent {
-    private final LivingEntity livingEntity;
-    private final ICyberwareUserData cyberwareUserData;
-
-    public CyberwareUpdateEvent(@Nonnull LivingEntity livingEntity, @Nonnull ICyberwareUserData cyberwareUserData) {
-        super(livingEntity);
-        this.livingEntity = livingEntity;
-        this.cyberwareUserData = cyberwareUserData;
+    public CyberwareUpdateEvent(LivingEntity entity, CyberwareUserData userData) {
+        super(entity);
+        this.userData = userData;
     }
 
-    @Nonnull
-    public LivingEntity getLivingEntity() {
-        return livingEntity;
-    }
-
-    @Nonnull
-    public ICyberwareUserData getCyberwareUserData() {
-        return cyberwareUserData;
+    public CyberwareUserData getUserData() {
+        return userData;
     }
 }

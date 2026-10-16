@@ -1,0 +1,14 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "cyberware:item/muscle_upgrades_muscle_replacements"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "cyberware:scavenged": 1
+      },
+      "model": "cyberware:item/muscle_upgrades_muscle_replacements_scavenged"
+    }
+  ]
+}

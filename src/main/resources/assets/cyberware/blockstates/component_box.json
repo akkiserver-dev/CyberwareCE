@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "cyberware:block/component_box",
+      "y": 270
+    },
+    "facing=west": {
+      "model": "cyberware:block/component_box",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "cyberware:block/component_box",
+      "y": 180
+    },
+    "facing=south": {
+      "model": "cyberware:block/component_box"
+    }
+  }
+}

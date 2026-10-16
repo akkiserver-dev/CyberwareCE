@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "cyberware:block/beacon",
+      "y": 270
+    },
+    "facing=west": {
+      "model": "cyberware:block/beacon",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "cyberware:block/beacon",
+      "y": 180
+    },
+    "facing=south": {
+      "model": "cyberware:block/beacon"
+    }
+  }
+}

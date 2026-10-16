@@ -1,0 +1,83 @@
+{
+  "parent": "minecraft:block/block",
+  "textures": {
+    "0": "cyberware:block/toolbox_back",
+    "1": "cyberware:block/toolbox_side",
+    "2": "cyberware:block/toolbox_front",
+    "3": "cyberware:block/toolbox_top",
+    "4": "cyberware:block/toolbox_bottom",
+    "particle": "cyberware:block/toolbox_back"
+  },
+  "elements": [
+    {
+      "name": "Cube",
+      "from": [
+        1.0,
+        0.0,
+        4.0
+      ],
+      "to": [
+        15.0,
+        10.0,
+        12.0
+      ],
+      "faces": {
+        "north": {
+          "texture": "#0",
+          "uv": [
+            1.0,
+            0.0,
+            15.0,
+            10.0
+          ]
+        },
+        "east": {
+          "texture": "#1",
+          "uv": [
+            0.0,
+            0.0,
+            8.0,
+            10.0
+          ]
+        },
+        "south": {
+          "texture": "#2",
+          "uv": [
+            0.0,
+            0.0,
+            14.0,
+            10.0
+          ]
+        },
+        "west": {
+          "texture": "#1",
+          "uv": [
+            0.0,
+            0.0,
+            8.0,
+            10.0
+          ]
+        },
+        "up": {
+          "texture": "#3",
+          "uv": [
+            0.0,
+            0.0,
+            14.0,
+            8.0
+          ]
+        },
+        "down": {
+          "texture": "#4",
+          "uv": [
+            0.0,
+            0.0,
+            14.0,
+            8.0
+          ]
+        }
+      }
+    }
+  ],
+  "render_type": "minecraft:cutout"
+}

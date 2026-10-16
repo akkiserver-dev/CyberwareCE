@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "cyberware:item/arm_upgrades_bow_scavenged"
+  }
+}

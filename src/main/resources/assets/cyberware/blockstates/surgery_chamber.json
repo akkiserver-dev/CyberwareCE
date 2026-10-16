@@ -1,0 +1,64 @@
+{
+  "variants": {
+    "facing=east,half=lower,open=false": {
+      "model": "cyberware:block/surgery_chamber_bottom",
+      "y": 90
+    },
+    "facing=west,half=lower,open=false": {
+      "model": "cyberware:block/surgery_chamber_bottom",
+      "y": 270
+    },
+    "facing=north,half=lower,open=false": {
+      "model": "cyberware:block/surgery_chamber_bottom"
+    },
+    "facing=south,half=lower,open=false": {
+      "model": "cyberware:block/surgery_chamber_bottom",
+      "y": 180
+    },
+    "facing=east,half=lower,open=true": {
+      "model": "cyberware:block/surgery_chamber_bottom",
+      "y": 90
+    },
+    "facing=west,half=lower,open=true": {
+      "model": "cyberware:block/surgery_chamber_bottom",
+      "y": 270
+    },
+    "facing=north,half=lower,open=true": {
+      "model": "cyberware:block/surgery_chamber_bottom"
+    },
+    "facing=south,half=lower,open=true": {
+      "model": "cyberware:block/surgery_chamber_bottom",
+      "y": 180
+    },
+    "facing=east,half=upper,open=false": {
+      "model": "cyberware:block/surgery_chamber_top",
+      "y": 90
+    },
+    "facing=west,half=upper,open=false": {
+      "model": "cyberware:block/surgery_chamber_top",
+      "y": 270
+    },
+    "facing=north,half=upper,open=false": {
+      "model": "cyberware:block/surgery_chamber_top"
+    },
+    "facing=south,half=upper,open=false": {
+      "model": "cyberware:block/surgery_chamber_top",
+      "y": 180
+    },
+    "facing=east,half=upper,open=true": {
+      "model": "cyberware:block/surgery_chamber_top",
+      "y": 90
+    },
+    "facing=west,half=upper,open=true": {
+      "model": "cyberware:block/surgery_chamber_top",
+      "y": 270
+    },
+    "facing=north,half=upper,open=true": {
+      "model": "cyberware:block/surgery_chamber_top"
+    },
+    "facing=south,half=upper,open=true": {
+      "model": "cyberware:block/surgery_chamber_top",
+      "y": 180
+    }
+  }
+}

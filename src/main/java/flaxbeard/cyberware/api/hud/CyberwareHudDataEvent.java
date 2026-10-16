@@ -5,42 +5,18 @@ import net.neoforged.bus.api.Event;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Fired on the client to collect every HUD element whose settings should be saved and loaded,
+ * regardless of whether it is currently visible.
+ */
 public class CyberwareHudDataEvent extends Event {
-    private final List<IHudElement> elements = new ArrayList<>();
-    private boolean hudjackAvailable;
-    private final int width;
-    private final int height;
+    private final List<HudElement> elements = new ArrayList<>();
 
-    public CyberwareHudDataEvent(int width, int height, boolean hudjackAvailable) {
-        super();
-        this.width = width;
-        this.height = height;
-        this.hudjackAvailable = hudjackAvailable;
-    }
-
-    public int getWidth() {
-        return width;
-    }
-
-    public int getHeight() {
-        return height;
-    }
-
-    public boolean isHudjackAvailable() {
-        return hudjackAvailable;
-    }
-
-    public void setHudjackAvailable(boolean hudjackAvailable) {
-        this.hudjackAvailable = hudjackAvailable;
-    }
-
-    public List<IHudElement> getElements()
-    {
+    public List<HudElement> getElements() {
         return elements;
     }
 
-    public void addElement(IHudElement element)
-    {
+    public void addElement(HudElement element) {
         elements.add(element);
     }
 }

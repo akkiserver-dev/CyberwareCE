@@ -1,0 +1,14 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "cyberware:item/foot_upgrades_wheels"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "cyberware:scavenged": 1
+      },
+      "model": "cyberware:item/foot_upgrades_wheels_scavenged"
+    }
+  ]
+}

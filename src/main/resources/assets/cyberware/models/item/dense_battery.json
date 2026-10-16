@@ -1,0 +1,14 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "cyberware:item/dense_battery"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "cyberware:scavenged": 1
+      },
+      "model": "cyberware:item/dense_battery_scavenged"
+    }
+  ]
+}

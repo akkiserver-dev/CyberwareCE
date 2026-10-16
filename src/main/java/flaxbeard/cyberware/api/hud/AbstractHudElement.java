@@ -1,8 +1,13 @@
 package flaxbeard.cyberware.api.hud;
 
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.world.entity.player.Player;
 
-public abstract class AbstractHudElement implements IHudElement {
+/**
+ * Base HUD element handling position, anchors, visibility and persistence.
+ */
+public abstract class AbstractHudElement implements HudElement {
+    private final String name;
     private int defaultX = 0;
     private int defaultY = 0;
     private int x = 0;
@@ -10,41 +15,59 @@ public abstract class AbstractHudElement implements IHudElement {
     private int width = 0;
     private int height = 0;
     private boolean hidden = false;
-    private final String name;
+    private AnchorHorizontal defaultHorizontalAnchor = AnchorHorizontal.LEFT;
+    private AnchorVertical defaultVerticalAnchor = AnchorVertical.TOP;
+    private AnchorHorizontal horizontalAnchor = AnchorHorizontal.LEFT;
+    private AnchorVertical verticalAnchor = AnchorVertical.TOP;
 
-    private AnchorHorizontal defaultHAnchor = AnchorHorizontal.LEFT;
-    private AnchorVertical defaultVAnchor = AnchorVertical.TOP;
-    private AnchorHorizontal hAnchor = AnchorHorizontal.LEFT;
-    private AnchorVertical vAnchor = AnchorVertical.TOP;
-
-    public AbstractHudElement(String name) {
+    protected AbstractHudElement(String name) {
         this.name = name;
     }
 
     @Override
-    public void render(Player player, int scaledWidth, int scaledHeight, boolean isHUDjackAvailable, boolean isConfigOpen, float partialTicks) {
-        int x = getX();
-        int y = getY();
+    public final void render(GuiGraphics graphics, Player player, int screenWidth, int screenHeight, boolean hudjackAvailable, boolean isConfigOpen, float partialTick) {
+        int renderX = getX();
+        int renderY = getY();
         if (getHorizontalAnchor() == AnchorHorizontal.RIGHT) {
-            x = scaledWidth - x - getWidth();
+            renderX = screenWidth - renderX - getWidth();
         }
         if (getVerticalAnchor() == AnchorVertical.BOTTOM) {
-            y = scaledHeight - y - getHeight();
+            renderY = screenHeight - renderY - getHeight();
         }
-
-        renderElement(x, y, player, scaledWidth, scaledHeight, isHUDjackAvailable, isConfigOpen, partialTicks);
+        renderElement(graphics, renderX, renderY, player, screenWidth, screenHeight, hudjackAvailable, isConfigOpen, partialTick);
     }
 
-    public abstract void renderElement(int x, int y, Player player, int scaledWidth, int scaledHeight, boolean hudjackAvailable, boolean isConfigOpen, float partialTick);
+    /**
+     * Renders the element at its resolved absolute position.
+     */
+    public abstract void renderElement(GuiGraphics graphics, int x, int y, Player player, int screenWidth, int screenHeight, boolean hudjackAvailable, boolean isConfigOpen, float partialTick);
 
     public void setDefaultX(int x) {
-        this.defaultX = x;
+        defaultX = x;
         setX(x);
     }
 
     public void setDefaultY(int y) {
-        this.defaultY = y;
+        defaultY = y;
         setY(y);
+    }
+
+    public void setDefaultHorizontalAnchor(AnchorHorizontal anchor) {
+        defaultHorizontalAnchor = anchor;
+        setHorizontalAnchor(anchor);
+    }
+
+    public void setDefaultVerticalAnchor(AnchorVertical anchor) {
+        defaultVerticalAnchor = anchor;
+        setVerticalAnchor(anchor);
+    }
+
+    public void setWidth(int width) {
+        this.width = width;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
     }
 
     @Override
@@ -60,6 +83,16 @@ public abstract class AbstractHudElement implements IHudElement {
     @Override
     public void setY(int y) {
         this.y = y;
+    }
+
+    @Override
+    public int getX() {
+        return x;
+    }
+
+    @Override
+    public int getY() {
+        return y;
     }
 
     @Override
@@ -88,59 +121,31 @@ public abstract class AbstractHudElement implements IHudElement {
     }
 
     @Override
-    public int getX() {
-        return x;
-    }
-
-    @Override
-    public int getY() {
-        return y;
-    }
-
-    @Override
     public AnchorHorizontal getHorizontalAnchor() {
-        return hAnchor;
-    }
-
-    public void setDefaultHorizontalAnchor(AnchorHorizontal anchor) {
-        defaultHAnchor = anchor;
-        setHorizontalAnchor(anchor);
+        return horizontalAnchor;
     }
 
     @Override
     public void setHorizontalAnchor(AnchorHorizontal anchor) {
-        hAnchor = anchor;
+        horizontalAnchor = anchor;
     }
 
     @Override
     public AnchorVertical getVerticalAnchor() {
-        return vAnchor;
-    }
-
-    public void setDefaultVerticalAnchor(AnchorVertical anchor) {
-        defaultVAnchor = anchor;
-        setVerticalAnchor(anchor);
+        return verticalAnchor;
     }
 
     @Override
     public void setVerticalAnchor(AnchorVertical anchor) {
-        vAnchor = anchor;
-    }
-
-    public void setWidth(int w) {
-        width = w;
-    }
-
-    public void setHeight(int h) {
-        height = h;
+        verticalAnchor = anchor;
     }
 
     @Override
     public void reset() {
         x = defaultX;
         y = defaultY;
-        vAnchor = defaultVAnchor;
-        hAnchor = defaultHAnchor;
+        horizontalAnchor = defaultHorizontalAnchor;
+        verticalAnchor = defaultVerticalAnchor;
     }
 
     @Override
@@ -149,18 +154,20 @@ public abstract class AbstractHudElement implements IHudElement {
     }
 
     @Override
-    public void save(IHudSaveData data) {
+    public void save(HudSaveData data) {
         data.setInteger("x", x);
         data.setInteger("y", y);
-        data.setBoolean("top", vAnchor == AnchorVertical.TOP);
-        data.setBoolean("left", hAnchor == AnchorHorizontal.LEFT);
+        data.setBoolean("top", verticalAnchor == AnchorVertical.TOP);
+        data.setBoolean("left", horizontalAnchor == AnchorHorizontal.LEFT);
+        data.setBoolean("hidden", hidden);
     }
 
     @Override
-    public void load(IHudSaveData data) {
+    public void load(HudSaveData data) {
         x = data.getInteger("x");
         y = data.getInteger("y");
-        vAnchor = data.getBoolean("top") ? AnchorVertical.TOP : AnchorVertical.BOTTOM;
-        hAnchor = data.getBoolean("left") ? AnchorHorizontal.LEFT : AnchorHorizontal.RIGHT;
+        verticalAnchor = data.getBoolean("top") ? AnchorVertical.TOP : AnchorVertical.BOTTOM;
+        horizontalAnchor = data.getBoolean("left") ? AnchorHorizontal.LEFT : AnchorHorizontal.RIGHT;
+        hidden = data.getBoolean("hidden");
     }
 }

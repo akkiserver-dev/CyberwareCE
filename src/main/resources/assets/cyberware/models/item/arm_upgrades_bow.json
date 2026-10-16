@@ -1,0 +1,14 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "cyberware:item/arm_upgrades_bow"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "cyberware:scavenged": 1
+      },
+      "model": "cyberware:item/arm_upgrades_bow_scavenged"
+    }
+  ]
+}

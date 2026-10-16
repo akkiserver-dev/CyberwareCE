@@ -1,0 +1,14 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "cyberware:item/leg_upgrades_jump_boost"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "cyberware:scavenged": 1
+      },
+      "model": "cyberware:item/leg_upgrades_jump_boost_scavenged"
+    }
+  ]
+}

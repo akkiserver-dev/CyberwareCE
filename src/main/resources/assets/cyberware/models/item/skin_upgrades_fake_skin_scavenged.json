@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "cyberware:item/skin_upgrades_fake_skin_scavenged"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "cyberware:block/blueprint_archive",
+      "y": 90
+    },
+    "facing=west": {
+      "model": "cyberware:block/blueprint_archive",
+      "y": 270
+    },
+    "facing=north": {
+      "model": "cyberware:block/blueprint_archive"
+    },
+    "facing=south": {
+      "model": "cyberware:block/blueprint_archive",
+      "y": 180
+    }
+  }
+}

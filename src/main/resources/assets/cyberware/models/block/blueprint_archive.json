@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/orientable",
+  "textures": {
+    "particle": "cyberware:block/blank_machine",
+    "top": "cyberware:block/blank_machine",
+    "side": "cyberware:block/blank_machine",
+    "front": "cyberware:block/blueprint_archive"
+  }
+}
